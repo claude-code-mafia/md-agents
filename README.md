@@ -1,0 +1,66 @@
+# Claude Agents
+
+A markdown-based agent system where agents are defined purely in `.md` files, with tools and composition capabilities. Each agent team can work together to accomplish complex tasks through natural language specifications.
+
+## What This Does
+
+This repository contains intelligent agents that:
+
+- Are defined entirely in markdown files
+- Can use tools (via MCP servers) to interact with external systems
+- Can compose with other agents to form teams
+- Execute complex workflows through natural language instructions
+
+## Current Agent Teams
+
+### 📱 X Poster (`/agents/x-poster/`)
+
+Automatically finds and posts daily Claude Code tips to X (Twitter):
+
+- **TipFinder**: Searches X for Claude Code tips and tricks
+- **TipCurator**: Selects the best unique tip to post
+- **TweetPoster**: Formats and posts engaging tweets
+- **XPosterOrchestrator**: Coordinates the daily workflow
+
+## How It Works
+
+1. **Agents are Markdown**: Each agent is a `.md` file with structured sections defining its behavior
+2. **Tools via MCP**: External capabilities (APIs, databases) are provided through MCP servers
+3. **Natural Language**: Agents follow instructions written in plain English
+4. **Composition**: Agents can invoke other agents to handle complex workflows
+
+## Directory Structure
+
+```
+/agents/
+  /tool-library/      # Markdown documentation for all available tools
+  /x-poster/          # X posting agent team
+    /tools/           # Team-specific tool configurations
+/docs/                # System documentation
+```
+
+## Running Agents
+
+## Tool Library
+
+The `/agents/tool-library/` directory contains markdown documentation for all MCP tools available in this repository. Each tool has:
+
+- Installation instructions
+- Configuration requirements
+- Usage examples
+- Natural language descriptions
+
+Teams can customize tool usage by creating their own tool markdown in their team folder.
+
+## Creating New Agents
+
+2. Place in appropriate team folder
+3. Document required tools in team's tool folder
+4. Test with Claude Code
+
+## Philosophy
+
+- **Simplicity**: Agents are just markdown files
+- **Composability**: Agents work together naturally
+- **Flexibility**: Natural language allows easy customization
+- **Transparency**: Everything is human-readable

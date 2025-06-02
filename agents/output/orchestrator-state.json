@@ -1,0 +1,59 @@
+{
+  "workflows": {
+    "morning-report": {
+      "last_run": null,
+      "last_success": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    },
+    "x-poster": {
+      "last_run": null,
+      "last_success": null,
+      "last_post_time": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    },
+    "evening-summary": {
+      "last_run": "2025-06-02T12:50:13",
+      "last_success": "2025-06-02T12:50:13",
+      "consecutive_failures": 0,
+      "total_runs": 1,
+      "total_successes": 1
+    },
+    "daily-cleanup": {
+      "last_run": null,
+      "last_success": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    },
+    "health-check": {
+      "last_run": null,
+      "last_success": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    },
+    "weekly-summary": {
+      "last_run": null,
+      "last_success": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    },
+    "week-wrap-up": {
+      "last_run": null,
+      "last_success": null,
+      "consecutive_failures": 0,
+      "total_runs": 0,
+      "total_successes": 0
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-06-02T12:40:00",
+    "last_updated": "2025-06-02T12:50:13"
+  }
+}

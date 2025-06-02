@@ -1,0 +1,38 @@
+# Logs
+agents/logs/*
+!agents/logs/.gitkeep
+
+# Outputs
+agents/output/*
+!agents/output/.gitkeep
+!agents/output/orchestrator-state.json
+
+# Sessions (when implemented)
+agents/sessions/active/*
+agents/sessions/completed/*
+!agents/sessions/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python (for MCP servers)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Temporary files
+*.tmp
+*.bak
+*~
