@@ -19,7 +19,7 @@ I can now:
 4. Update state
 
 ### For Workflows (New Mode)
-1. Load workflow definition from workflows/[name].md
+1. Load workflow definition from ../agents/workflows/[name].md
 2. Ask Session Manager to create a session
 3. Execute each step in sequence:
    - Run the specified agent
@@ -38,19 +38,19 @@ Step 1: Start Session
 - Status: "running"
 
 Step 2: Email Scanner
-- Execute: specialists/email-scanner.md
+- Execute: ../agents/specialists/email-scanner.md
 - Input: Default parameters
 - Output: context/email-summary.md
 - Update: Session shows step 1 complete
 
 Step 3: News Gatherer  
-- Execute: specialists/news-gatherer.md
+- Execute: ../agents/specialists/news-gatherer.md
 - Input: Read context from email scanner
 - Output: context/news-summary.md
 - Update: Session shows step 2 complete
 
 Step 4: Summary Writer
-- Execute: specialists/summary-writer.md
+- Execute: ../agents/specialists/summary-writer.md
 - Input: All context files
 - Output: output/daily-briefing-DATE.md
 - Update: Session complete, move to completed/

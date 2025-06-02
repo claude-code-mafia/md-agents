@@ -1,16 +1,19 @@
 # Logs
-agents/logs/*
-!agents/logs/.gitkeep
+logs/*
+!logs/.gitkeep
 
-# Outputs
-agents/output/*
-!agents/output/.gitkeep
-!agents/output/orchestrator-state.json
+# Runtime outputs
+runtime/output/*
+!runtime/output/.gitkeep
+runtime/context/*
+!runtime/context/.gitkeep
 
-# Sessions (when implemented)
-agents/sessions/active/*
-agents/sessions/completed/*
-!agents/sessions/.gitkeep
+# Sessions
+runtime/sessions/*
+!runtime/sessions/.gitkeep
+
+# State files (preserve orchestrator state)
+!runtime/state/orchestrator-state.json
 
 # OS
 .DS_Store

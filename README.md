@@ -2,6 +2,8 @@
 
 A markdown-based agent system where agents are defined purely in `.md` files, with tools and composition capabilities. Each agent team can work together to accomplish complex tasks through natural language specifications.
 
+**📁 See [STRUCTURE.md](STRUCTURE.md) for project organization**
+
 ## What This Does
 
 This repository contains intelligent agents that:
