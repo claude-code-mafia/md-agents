@@ -372,4 +372,4 @@ Use these examples as templates:
 4. Test with sample data
 5. Integrate into workflows
 
-Ready to dive deeper? Check our [API Reference](/api/) for detailed specifications.
+Ready to dive deeper? Check our [API Reference]({{ '/api/' | relative_url }}) for detailed specifications.

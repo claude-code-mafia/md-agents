@@ -279,4 +279,4 @@ Execute workflows with:
 4. **Add Checkpoints**: Save intermediate results
 5. **Monitor Performance**: Log execution times
 
-See [Coordinator Examples](/examples/coordinators/) for dynamic orchestration.
+See [Coordinator Examples]({{ '/examples/coordinators/' | relative_url }}) for dynamic orchestration.

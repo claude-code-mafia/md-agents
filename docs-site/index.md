@@ -119,7 +119,7 @@ Analyze query complexity:
 ## Ready to Build?
 
 <div class="cta-buttons">
-  <a href="/md-agents/quickstart/" class="btn btn-primary">Start Tutorial</a>
-  <a href="/md-agents/examples/" class="btn btn-secondary">Browse Examples</a>
+  <a href="{{ '/quickstart/' | relative_url }}" class="btn btn-primary">Start Tutorial</a>
+  <a href="{{ '/examples/' | relative_url }}" class="btn btn-secondary">Browse Examples</a>
   <a href="https://github.com/peteknowsai/md-agents" class="btn btn-outline">View on GitHub</a>
 </div>

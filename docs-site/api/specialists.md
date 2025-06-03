@@ -212,6 +212,6 @@ Error scenarios and recovery strategies
 
 ## See Also
 
-- [Agent Types](/docs/agent-types/)
-- [Notation Guide](/docs/notation/)
-- [Example Specialists](/examples/basic/)
+- [Agent Types]({{ '/docs/agent-types/' | relative_url }})
+- [Notation Guide]({{ '/docs/notation/' | relative_url }})
+- [Example Specialists]({{ '/examples/basic/' | relative_url }})

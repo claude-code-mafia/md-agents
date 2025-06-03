@@ -382,7 +382,7 @@ Does it require dynamic decisions?
 
 ## Examples
 
-See our [Examples](/examples/) section for complete implementations:
-- [Basic Specialists](/examples/basic/)
-- [Common Workflows](/examples/workflows/)
-- [Advanced Coordinators](/examples/coordinators/)
+See our [Examples]({{ '/examples/' | relative_url }}) section for complete implementations:
+- [Basic Specialists]({{ '/examples/basic/' | relative_url }})
+- [Common Workflows]({{ '/examples/workflows/' | relative_url }})
+- [Advanced Coordinators]({{ '/examples/coordinators/' | relative_url }})

@@ -61,4 +61,4 @@ To add a new tool:
 3. Provide usage examples
 4. Test with an agent
 
-See the [Tool Library](/tools/tool-library/) for all available tools.
+See the Tool Library in `/tools/tool-library/` for all available tools.

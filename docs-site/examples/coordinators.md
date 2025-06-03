@@ -326,4 +326,4 @@ Coordinators work together, sharing insights.
 ### Adaptive
 Coordinators learn and improve routing over time.
 
-See the [API Reference](/api/coordinators/) for technical details.
+See the [API Reference]({{ '/api/coordinators/' | relative_url }}) for technical details.

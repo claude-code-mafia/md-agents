@@ -172,8 +172,8 @@ tail -f logs/activity.log
 Now that you have a working system:
 
 1. **Explore Examples**: Check `/examples/` for more complex agents
-2. **Learn Notation**: Read the [Notation Guide](/docs/notation/) 
-3. **Add Tools**: See [Available Tools](/api/tools/)
+2. **Learn Notation**: Read the [Notation Guide]({{ '/docs/notation/' | relative_url }}) 
+3. **Add Tools**: See [Available Tools]({{ '/api/tools/' | relative_url }})
 4. **Build Custom Agents**: Follow patterns in `/agents/specialists/`
 
 ### Quick Tips
@@ -198,4 +198,4 @@ Now that you have a working system:
 <strong>No output?</strong> Check logs in `/logs/activity.log` for error messages.
 </div>
 
-Ready to build something more complex? Check out our [examples](/examples/) or dive into the [documentation](/docs/).
+Ready to build something more complex? Check out our [examples]({{ '/examples/' | relative_url }}) or dive into the [documentation]({{ '/docs/' | relative_url }}).

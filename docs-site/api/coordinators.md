@@ -42,4 +42,4 @@ If [condition]:
 
 ## Examples
 
-See [Coordinator Examples](/examples/coordinators/) for implementations.
+See [Coordinator Examples]({{ '/examples/coordinators/' | relative_url }}) for implementations.

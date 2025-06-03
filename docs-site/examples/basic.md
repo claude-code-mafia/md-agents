@@ -159,4 +159,4 @@ For example:
 - Add error handling
 - Implement state management
 
-See [Workflow Examples](/examples/workflows/) for multi-agent pipelines.
+See [Workflow Examples]({{ '/examples/workflows/' | relative_url }}) for multi-agent pipelines.

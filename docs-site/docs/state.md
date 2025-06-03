@@ -94,4 +94,4 @@ Merge with existing ~cache.aggregated_data~
 - ~cache.emails.*~ - Temporary email storage
 ```
 
-For more state management patterns and examples, see the [Best Practices](/best-practices/) guide.
+For more state management patterns and examples, see the [Best Practices]({{ '/best-practices/' | relative_url }}) guide.

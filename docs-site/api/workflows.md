@@ -46,4 +46,4 @@ Description of the workflow purpose
 
 ## Examples
 
-See [Workflow Examples](/examples/workflows/) for complete implementations.
+See [Workflow Examples]({{ '/examples/workflows/' | relative_url }}) for complete implementations.

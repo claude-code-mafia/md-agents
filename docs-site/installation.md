@@ -50,7 +50,7 @@ Ensure Claude Code has access to:
 
 ## Optional: Install Additional Tools
 
-md agents can use various CLI tools. See [Tool Library](/api/tools/) for available tools and installation instructions.
+md agents can use various CLI tools. See [Tool Library]({{ '/api/tools/' | relative_url }}) for available tools and installation instructions.
 
 ### Common Tools
 
@@ -135,9 +135,9 @@ chmod +x scripts/*.sh
 
 ✅ Installation complete! Now you can:
 
-1. Follow the [Quickstart Guide](/quickstart/)
-2. Browse [Examples](/examples/)
-3. Read about [Core Concepts](/docs/concepts/)
+1. Follow the [Quickstart Guide]({{ '/quickstart/' | relative_url }})
+2. Browse [Examples]({{ '/examples/' | relative_url }})
+3. Read about [Core Concepts]({{ '/docs/concepts/' | relative_url }})
 4. Create your first agent
 
 ## Updating md agents

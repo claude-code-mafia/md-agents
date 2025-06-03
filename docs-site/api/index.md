@@ -43,7 +43,7 @@ Error scenarios and recovery
 
 ## Component Types
 
-### [Specialists](/api/specialists/)
+### [Specialists]({{ '/api/specialists/' | relative_url }})
 Single-purpose agents with focused behavior.
 
 **Required Fields:**
@@ -57,7 +57,7 @@ Single-purpose agents with focused behavior.
 - Error handling
 - State management
 
-### [Workflows](/api/workflows/)
+### [Workflows]({{ '/api/workflows/' | relative_url }})
 Sequential execution pipelines.
 
 **Required Fields:**
@@ -70,7 +70,7 @@ Sequential execution pipelines.
 - Conditional logic
 - Parallel execution
 
-### [Coordinators](/api/coordinators/)
+### [Coordinators]({{ '/api/coordinators/' | relative_url }})
 Dynamic orchestration agents.
 
 **Required Fields:**
@@ -366,7 +366,7 @@ Command-line interface for Gmail
 
 For detailed examples of each component type, see:
 
-- [Specialist Reference](/api/specialists/)
-- [Workflow Reference](/api/workflows/)
-- [Coordinator Reference](/api/coordinators/)
-- [Tools Reference](/api/tools/)
+- [Specialist Reference]({{ '/api/specialists/' | relative_url }})
+- [Workflow Reference]({{ '/api/workflows/' | relative_url }})
+- [Coordinator Reference]({{ '/api/coordinators/' | relative_url }})
+- [Tools Reference]({{ '/api/tools/' | relative_url }})

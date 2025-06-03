@@ -263,7 +263,7 @@ cat runtime/state/coordinator-state.json
 
 ## Next Steps
 
-- Explore [Agent Types](/docs/agent-types/) in detail
-- Learn the complete [Notation Guide](/docs/notation/)
-- See [State Management](/docs/state/) patterns
-- Browse [Examples](/examples/) for inspiration
+- Explore [Agent Types]({{ '/docs/agent-types/' | relative_url }}) in detail
+- Learn the complete [Notation Guide]({{ '/docs/notation/' | relative_url }})
+- See [State Management]({{ '/docs/state/' | relative_url }}) patterns
+- Browse [Examples]({{ '/examples/' | relative_url }}) for inspiration
