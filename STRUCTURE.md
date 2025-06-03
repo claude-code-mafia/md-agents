@@ -5,7 +5,7 @@
 The Claude Agents project is organized with clear separation of concerns:
 
 ```
-/claude-agents/                    # Project root
+/md-agents/                        # Project root
 ├── README.md                      # Project overview
 ├── CLAUDE.md                      # Development instructions
 ├── STRUCTURE.md                   # This file

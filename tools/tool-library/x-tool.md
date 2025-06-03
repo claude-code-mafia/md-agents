@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes how to set up and use mcp-twikit as an MCP server within the claude-agents project. Unlike the typical Claude Desktop configuration, we're running this as a project-based MCP server that can be used by Claude Code.
+This document describes how to set up and use mcp-twikit as an MCP server within the md-agents project. Unlike the typical Claude Desktop configuration, we're running this as a project-based MCP server that can be used by Claude Code.
 
 ## What is mcp-twikit?
 
@@ -22,7 +22,7 @@ mcp-twikit is a Model Context Protocol (MCP) server that enables AI assistants t
 Create the following structure in the project:
 
 ```
-claude-agents/
+md-agents/
 ├── mcp-servers/
 │   ├── twitter/
 │   │   ├── server.py
@@ -97,7 +97,7 @@ Update your Claude Code configuration to include the MCP server. For project-spe
 ```json
 {
   "projects": {
-    "/Users/pete/Projects/claude-agents": {
+    "/Users/pete/Projects/md-agents": {
       "mcpServers": {
         "twitter": {
           "command": "python",
