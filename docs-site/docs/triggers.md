@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Triggers
-description: How agents are activated in MD Agents
+description: How agents are activated in md agents
+permalink: /docs/triggers/
 ---
 
-Triggers define when and how agents are activated. MD Agents supports three types of triggers.
+Triggers define when and how agents are activated. md agents supports three types of triggers.
 
 ## Trigger Types
 

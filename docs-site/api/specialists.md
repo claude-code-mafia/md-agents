@@ -2,6 +2,7 @@
 layout: docs
 title: Specialists API
 description: Complete reference for specialist agents
+permalink: /api/specialists/
 ---
 
 Specialists are single-purpose agents that excel at one specific task.
@@ -80,7 +81,7 @@ Error scenarios and recovery strategies
 
 ## Metadata
 - version: 1.0.0
-- author: MD Agents Team
+- author: md agents Team
 - tags: [email, analysis, nlp]
 
 ## Triggers

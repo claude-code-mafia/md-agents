@@ -1,7 +1,8 @@
 ---
 layout: docs
 title: Best Practices
-description: Guidelines for building effective MD Agents
+description: Guidelines for building effective md agents
+permalink: /best-practices/
 ---
 
 Follow these best practices to create reliable, maintainable agent systems.

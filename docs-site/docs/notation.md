@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Notation Guide
-description: Complete reference for MD Agents notation system
+description: Complete reference for md agents notation system
+permalink: /docs/notation/
 ---
 
-MD Agents uses a simple, intuitive notation system to represent tools, agents, variables, and state. This guide covers all notation symbols and their usage.
+md agents uses a simple, intuitive notation system to represent tools, agents, variables, and state. This guide covers all notation symbols and their usage.
 
 ## Quick Reference
 
@@ -381,7 +382,7 @@ Use {defined_var}      # Must be defined earlier
 
 ## Summary
 
-The MD Agents notation system is designed to be:
+The md agents notation system is designed to be:
 - **Intuitive**: Symbols match their purpose
 - **Consistent**: Same pattern everywhere
 - **Readable**: Clear at a glance

@@ -2,9 +2,10 @@
 layout: docs
 title: Agent Types
 description: Understanding Specialists, Workflows, and Coordinators
+permalink: /docs/agent-types/
 ---
 
-MD Agents provides three distinct agent types, each designed for different use cases. Understanding when to use each type is key to building effective systems.
+md agents provides three distinct agent types, each designed for different use cases. Understanding when to use each type is key to building effective systems.
 
 ## Overview
 

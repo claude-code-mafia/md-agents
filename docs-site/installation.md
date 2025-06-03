@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Installation
-description: Get MD Agents up and running on your system
+description: Get md agents up and running on your system
+permalink: /installation/
 ---
 
-MD Agents is designed to work with Claude Code and requires minimal setup.
+md agents is designed to work with Claude Code and requires minimal setup.
 
 ## Prerequisites
 
@@ -49,7 +50,7 @@ Ensure Claude Code has access to:
 
 ## Optional: Install Additional Tools
 
-MD Agents can use various CLI tools. See [Tool Library](/api/tools/) for available tools and installation instructions.
+md agents can use various CLI tools. See [Tool Library](/api/tools/) for available tools and installation instructions.
 
 ### Common Tools
 
@@ -139,7 +140,7 @@ chmod +x scripts/*.sh
 3. Read about [Core Concepts](/docs/concepts/)
 4. Create your first agent
 
-## Updating MD Agents
+## Updating md agents
 
 ```bash
 # Pull latest changes

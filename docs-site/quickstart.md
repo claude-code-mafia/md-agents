@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Quickstart
-description: Get up and running with MD Agents in 5 minutes
+description: Get up and running with md agents in 5 minutes
 permalink: /quickstart/
 ---
 

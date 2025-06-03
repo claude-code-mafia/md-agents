@@ -1,14 +1,15 @@
 ---
 layout: docs
 title: Debugging
-description: Troubleshooting and debugging MD Agents
+description: Troubleshooting and debugging md agents
+permalink: /debugging/
 ---
 
 Learn how to debug and troubleshoot issues with your agents.
 
 ## Viewing Logs
 
-MD Agents provides comprehensive logging:
+md agents provides comprehensive logging:
 
 ```bash
 # View activity log

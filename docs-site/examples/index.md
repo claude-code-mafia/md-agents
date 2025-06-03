@@ -4,7 +4,7 @@ title: Examples
 description: Learn by example with real-world agent implementations
 ---
 
-These examples demonstrate the power and flexibility of MD Agents across various use cases.
+These examples demonstrate the power and flexibility of md agents across various use cases.
 
 ## Basic Examples
 

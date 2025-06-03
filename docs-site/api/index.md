@@ -1,10 +1,10 @@
 ---
 layout: docs
 title: API Reference
-description: Complete reference for all MD Agents components
+description: Complete reference for all md agents components
 ---
 
-The MD Agents API is expressed entirely through markdown specifications. This reference documents all available fields, patterns, and options.
+The md agents API is expressed entirely through markdown specifications. This reference documents all available fields, patterns, and options.
 
 ## Agent Specification
 
@@ -312,7 +312,7 @@ Command-line interface for Gmail
 
 ## Metadata
 - version: 1.0.0
-- author: MD Agents Team
+- author: md agents Team
 - tags: [email, automation, productivity]
 
 ## Triggers

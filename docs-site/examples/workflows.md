@@ -2,6 +2,7 @@
 layout: docs
 title: Workflow Examples
 description: Multi-agent sequential pipelines
+permalink: /examples/workflows/
 ---
 
 These examples show how to combine multiple agents into workflows.

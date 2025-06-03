@@ -2,6 +2,7 @@
 layout: docs
 title: Basic Agent Examples
 description: Simple specialist agents to get started
+permalink: /examples/basic/
 ---
 
 These examples demonstrate basic specialist agents that perform single tasks.

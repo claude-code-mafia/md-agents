@@ -1,6 +1,6 @@
-# MD Agents Documentation Site
+# md agents Documentation Site
 
-This is the documentation site for MD Agents, built with Jekyll for GitHub Pages.
+This is the documentation site for md agents, built with Jekyll for GitHub Pages.
 
 ## Local Development
 

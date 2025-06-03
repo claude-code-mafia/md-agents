@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Extensions
-description: Extending MD Agents with custom capabilities
+description: Extending md agents with custom capabilities
+permalink: /extensions/
 ---
 
-MD Agents is designed to be extensible. Add new capabilities by creating custom agents, tools, and patterns.
+md agents is designed to be extensible. Add new capabilities by creating custom agents, tools, and patterns.
 
 ## Creating Custom Tools
 
@@ -43,7 +44,7 @@ Execute [my-tool get {item_id}] for details
 
 ## Custom Agent Types
 
-While MD Agents provides three core types, you can create variations:
+While md agents provides three core types, you can create variations:
 
 ### Domain-Specific Specialists
 ```markdown

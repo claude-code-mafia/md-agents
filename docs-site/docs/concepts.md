@@ -1,11 +1,11 @@
 ---
 layout: docs
 title: Core Concepts
-description: Understand the fundamental concepts of MD Agents
+description: Understand the fundamental concepts of md agents
 permalink: /docs/concepts/
 ---
 
-MD Agents introduces a new paradigm: **agents as markdown specifications**. This guide covers the core concepts that make the framework powerful yet simple.
+md agents introduces a new paradigm: **agents as markdown specifications**. This guide covers the core concepts that make the framework powerful yet simple.
 
 ## Philosophy
 
@@ -36,7 +36,7 @@ This creates powerful multi-agent systems without complex orchestration code.
 
 ## Agent Types
 
-MD Agents has three fundamental agent types:
+md agents has three fundamental agent types:
 
 ### 1. Specialists
 Single-purpose agents that excel at one specific task.
@@ -82,7 +82,7 @@ Intelligently route and coordinate based on context
 
 ## The Notation System
 
-MD Agents uses intuitive symbols to represent different elements:
+md agents uses intuitive symbols to represent different elements:
 
 ### Core Symbols
 
@@ -234,7 +234,7 @@ Only store what's necessary:
 
 ## Execution Model
 
-Understanding how MD Agents executes your specifications:
+Understanding how md agents executes your specifications:
 
 1. **Parse**: Markdown is parsed into structured instructions
 2. **Resolve**: Agent references and tools are resolved
@@ -244,7 +244,7 @@ Understanding how MD Agents executes your specifications:
 
 ## Debugging
 
-MD Agents provides visibility into execution:
+md agents provides visibility into execution:
 
 ### Activity Logs
 ```bash

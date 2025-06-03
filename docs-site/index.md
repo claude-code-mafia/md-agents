@@ -1,11 +1,11 @@
 ---
 layout: home
-title: MD Agents - Markdown-Based Agent Framework
+title: md agents - Markdown-Based Agent Framework
 ---
 
 # Build intelligent agents with markdown
 
-MD Agents is a revolutionary framework that lets you create powerful AI agent systems using nothing but markdown files. No code required.
+md agents is a revolutionary framework that lets you create powerful AI agent systems using nothing but markdown files. No code required.
 
 ```markdown
 # Specialist: Research Agent
@@ -25,7 +25,7 @@ MD Agents is a revolutionary framework that lets you create powerful AI agent sy
 - sources: list[str]
 ```
 
-## Why MD Agents?
+## Why md agents?
 
 ### 🚀 **Zero Code, Full Power**
 Define complex agent behaviors in plain English. The framework handles all the implementation details.

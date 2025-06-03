@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: State Management
-description: Managing persistent state and memory in MD Agents
+description: Managing persistent state and memory in md agents
+permalink: /docs/state/
 ---
 
-MD Agents provides a flexible state management system that allows agents to maintain memory, share data, and track execution context.
+md agents provides a flexible state management system that allows agents to maintain memory, share data, and track execution context.
 
 ## State Types
 

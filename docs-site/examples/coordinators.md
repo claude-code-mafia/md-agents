@@ -2,6 +2,7 @@
 layout: docs
 title: Coordinator Examples
 description: Dynamic orchestration with intelligent routing
+permalink: /examples/coordinators/
 ---
 
 These examples demonstrate coordinators that make intelligent decisions about which agents to use.

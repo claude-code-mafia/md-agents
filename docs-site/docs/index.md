@@ -1,21 +1,22 @@
 ---
 layout: docs
 title: Documentation
-description: Learn how to build with MD Agents
+description: Learn how to build with md agents
+permalink: /docs/
 ---
 
-Welcome to the MD Agents documentation. This guide will help you understand and master the framework.
+Welcome to the md agents documentation. This guide will help you understand and master the framework.
 
 ## Getting Started
 
 <div class="alert alert-info">
-<strong>New to MD Agents?</strong> Start with our <a href="/quickstart/">Quickstart Guide</a> to build your first agent in 5 minutes.
+<strong>New to md agents?</strong> Start with our <a href="/quickstart/">Quickstart Guide</a> to build your first agent in 5 minutes.
 </div>
 
 ## Documentation Overview
 
 ### 📚 [Core Concepts](/docs/concepts/)
-Understand the fundamental principles behind MD Agents:
+Understand the fundamental principles behind md agents:
 - Natural language specifications
 - Agent composition
 - The notation system

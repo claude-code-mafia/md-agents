@@ -2,6 +2,7 @@
 layout: docs
 title: Coordinators API
 description: Complete reference for coordinator agents
+permalink: /api/coordinators/
 ---
 
 Coordinators are dynamic orchestrators that make intelligent routing decisions based on context.

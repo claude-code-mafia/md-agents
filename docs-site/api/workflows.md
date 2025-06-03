@@ -2,6 +2,7 @@
 layout: docs
 title: Workflows API
 description: Complete reference for workflow agents
+permalink: /api/workflows/
 ---
 
 Workflows are sequential pipelines that orchestrate multiple agents in a fixed order.
