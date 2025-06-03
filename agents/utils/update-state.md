@@ -1,32 +1,29 @@
-# Update State Utility
+# Specialist: Update State
 
-Updates the orchestrator state file after workflow execution.
+<<You update the coordinator state file after executions.>>
 
-## Purpose
-Maintain accurate tracking of workflow executions in orchestrator-state.json.
+## Triggers
+- **Schedule**: never
+- **Event**: After any agent/workflow execution
 
-## Instructions
+## Input
+- item_name: str  # Name of workflow/agent
+- status: "success" | "failure"
+- custom_data: object?
 
-Given inputs:
-- Workflow name
-- Execution status (success/failure)
-- Optional: Custom data (e.g., last_post_time)
+## Behavior
 
-Steps:
-1. Read current orchestrator-state.json
-2. Update the specified workflow's data:
-   - Set last_run to current timestamp
-   - If success: 
-     - Set last_success to current timestamp
-     - Reset consecutive_failures to 0
-     - Increment total_successes
-   - If failure:
-     - Increment consecutive_failures
-   - Always increment total_runs
-3. Update metadata.last_updated
-4. Write updated state back to file
+1. Read current state from runtime/state/coordinator-state.json
+2. Update the item's data:
+   - last_run = current timestamp
+   - If success: last_success = now, consecutive_failures = 0
+   - If failure: increment consecutive_failures
+   - Increment total_runs
+3. Merge any custom_data
+4. Write updated state back
 
-## Error Handling
-- If state file doesn't exist, create it with default structure
-- If JSON is corrupted, log error and create fresh file
-- Always preserve data for other workflows
+If state file missing, create with defaults.
+
+## Output
+- updated: bool
+- state_path: str

@@ -15,10 +15,10 @@ You are working on a markdown-based agent system where agents are defined purely
 - Agent behavior is defined in plain English, not programming logic
 
 ## Key Conventions
-- Agent teams go in subdirectories (e.g., `/agents/x-poster/`)
-- Tool documentation in `/agents/tool-library/`
-- Outputs saved to `/agents/output/`
-- Logs saved to `/agents/logs/`
+- Agents organized in `/agents/specialists/`, `/agents/workflows/`, and `/agents/coordinators/`
+- Tool documentation in `/tools/tool-library/`
+- Outputs saved to `/runtime/output/`
+- Logs saved to `/logs/`
 
 ## Agent Structure
 Each agent markdown file should contain:
@@ -30,14 +30,14 @@ Each agent markdown file should contain:
 
 ## Testing Agents
 ```bash
-# Run all agents via orchestrator
-cd agents && ./scripts/run-agents.sh
+# Run all agents via coordinator
+./scripts/run-agents.sh
 
 # Check logs
-tail -f agents/logs/activity.log
+tail -f logs/activity.log
 
 # View outputs
-ls -la agents/output/
+ls -la runtime/output/
 ```
 
 ## Philosophy

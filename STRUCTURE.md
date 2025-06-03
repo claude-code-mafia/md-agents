@@ -13,14 +13,15 @@ The Claude Agents project is organized with clear separation of concerns:
 │
 ├── /agents/                       # Agent definitions only
 │   ├── /specialists/              # Individual specialist agents
-│   ├── /workflows/                # Multi-agent workflows
+│   ├── /workflows/                # Sequential multi-agent pipelines
+│   ├── /coordinators/             # Dynamic orchestration agents
 │   └── /utils/                    # Utility/helper agents
 │
 ├── /runtime/                      # Execution environment
 │   ├── CLAUDE.md                  # Runtime instructions
-│   ├── orchestrator.md            # Main workflow orchestrator
+│   ├── coordinator.md             # Main execution coordinator
 │   ├── schedule.md                # Time-based scheduling
-│   ├── /state/                    # Persistent state (orchestrator-state.json)
+│   ├── /state/                    # Persistent state
 │   ├── /sessions/                 # Active and completed sessions
 │   ├── /context/                  # Temporary context between agents
 │   └── /output/                   # Generated outputs
@@ -60,7 +61,7 @@ The Claude Agents project is organized with clear separation of concerns:
 **Purpose**: Everything needed to execute agents  
 **Key files**:
 - `CLAUDE.md` - Instructions for runtime execution
-- `orchestrator.md` - Reads workflows and manages execution
+- `coordinator.md` - Manages execution of agents, workflows, and coordinators
 - `schedule.md` - Defines when workflows run
 - Session tracking, context passing, outputs
 
@@ -88,8 +89,8 @@ The Claude Agents project is organized with clear separation of concerns:
 This separation ensures the right context is loaded for each activity.
 
 ### Important Paths
-- Agent definitions: `/agents/specialists/`, `/agents/workflows/`
-- Runtime state: `/runtime/state/orchestrator-state.json`
+- Agent definitions: `/agents/specialists/`, `/agents/workflows/`, `/agents/coordinators/`
+- Runtime state: `/runtime/state/`
 - Execution logs: `/logs/activity.log`
 - Generated outputs: `/runtime/output/`
 

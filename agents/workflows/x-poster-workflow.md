@@ -1,90 +1,50 @@
 # Workflow: X Poster
 
-This workflow finds and posts daily Claude Code tips to X (Twitter).
+This workflow finds and posts daily Claude Code tips to X.
 
-## When to Run
+## Triggers
+- **Schedule**: 0 10 * * *  # 10am daily
+- **Command**: "post claude tip"
 
-Run this workflow when:
-- Every day at 10:00 AM
-- Manually when you want to post a tip
-- Never more than once per 20 hours
+## Input
+- search_hours: int = 48
+- max_tips: int = 20
 
-## The Team
-
-This workflow uses these specialist agents:
-- **X Tip Finder**: Searches X for Claude Code tips
-- **X Tip Curator**: Selects the best unique tip
-- **X Post Writer**: Crafts an engaging post
-- **Session Manager**: Tracks workflow progress
-
-## The Process
+## Steps
 
 ### Step 1: Find Tips
-- **Who**: X Tip Finder
-- **What**: Search X for Claude Code tips from last 48 hours
-- **Needs**: Twitter API access
-- **Produces**: List of 20 posts saved to `context/found-tips.yaml`
+- **Execute**: %x-tip-finder%
+- **With**: 
+  - time_range = "{search_hours} hours"
+  - max_results = {max_tips}
+- **Get**: {found_tips}
 
 ### Step 2: Select Best Tip
-- **Who**: X Tip Curator
-- **What**: Review tips and select best one we haven't posted
-- **Needs**: 
-  - Found tips from Step 1
-  - Read `agents/x-poster/log.md` for history
-- **Produces**: Selected tip saved to `context/selected-tip.yaml`
+- **Execute**: %x-tip-curator%
+- **With**: 
+  - tips = {found_tips}
+  - history_file = "logs/x-poster-history.md"
+- **Get**: {selected_tip}
 
 ### Step 3: Write Post
-- **Who**: X Post Writer
-- **What**: Transform tip into engaging X post
-- **Needs**: Selected tip from Step 2
-- **Produces**: Ready-to-post content in `context/tweet.md`
+- **Execute**: %x-post-writer%
+- **With**: tip = {selected_tip}
+- **Get**: {tweet_content}
 
-### Step 4: Publish Post
-- **Who**: X Poster (using Twitter API)
-- **What**: Post to X and update log
-- **Needs**: 
-  - Tweet content from Step 3
-  - Twitter API credentials
-- **Produces**: 
-  - Posted to X
-  - Updated `agents/x-poster/log.md`
+### Step 4: Publish
+- **Execute**: %x-poster%
+- **With**: 
+  - content = {tweet_content}
+  - update_log = true
+- **Save**: logs/x-poster-history.md
 
-## Success Looks Like
+## Success
+- [ ] Found tips
+- [ ] Selected unique tip
+- [ ] Posted to X
+- [ ] Updated history
 
-The workflow succeeded when:
-- [ ] Found at least 5 Claude Code tips
-- [ ] Selected a unique, valuable tip
-- [ ] Created engaging post within character limit
-- [ ] Successfully posted to X
-- [ ] Updated log with new post
-
-## If Something Goes Wrong
-
-- If Tip Finder fails: Check Twitter API access
-- If no unique tips found: Log "No new tips today" and exit gracefully
-- If posting fails: Save tweet for manual posting
-- Always: Update log with what happened
-
-## Example Session
-
-```
-[10:00:00] Starting X Poster workflow
-[10:00:01] X Tip Finder: Searching last 48 hours
-[10:00:08] X Tip Finder: Found 23 Claude Code posts
-[10:00:09] X Tip Curator: Checking against posting history
-[10:00:11] X Tip Curator: Selected tip about multi-repo workflow
-[10:00:12] X Post Writer: Crafting engaging post
-[10:00:13] X Poster: Publishing to X
-[10:00:15] Success! Posted at https://x.com/YourHandle/status/123
-[10:00:16] Workflow complete
-```
-
-## Manual Override
-
-To post a specific tip:
-```
-Execute workflow: x-poster
-Parameters:
-  manual_tip: "Your specific tip here"
-  skip_search: true
-```
+## If Things Go Wrong
+- No tips found: Exit gracefully
+- No unique tips: Log and skip
+- Post fails: Save for manual posting

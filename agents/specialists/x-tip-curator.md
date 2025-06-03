@@ -24,7 +24,7 @@ To do my job, I need:
 I mainly work by reading and analyzing:
 ```
 # Check our history
-Read: agents/x-poster/log.md
+Read: logs/x-poster-history.md
 
 # Analyze tips for:
 - Practical value (can people use this immediately?)

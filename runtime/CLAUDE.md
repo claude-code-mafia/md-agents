@@ -3,7 +3,7 @@
 You are executing agents, not developing them.
 
 ## Primary Task
-Execute the workflow defined in orchestrator.md
+Execute the workflow defined in coordinator.md
 
 ## Execution Rules
 - Follow agent specifications exactly as written

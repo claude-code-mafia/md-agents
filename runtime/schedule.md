@@ -1,35 +1,27 @@
 # Schedule
 
-Simple time-to-workflow mappings. The orchestrator decides if workflows actually run based on conditions.
+Simple time-based triggers for agents and workflows. The coordinator decides what actually runs.
 
-## Daily Workflows
-
-```
-09:00 → morning-report
-10:00 → x-poster
-18:00 → evening-summary
-23:00 → daily-cleanup
-```
-
-## Hourly Checks
+## Daily Tasks
 
 ```
-*:00 → health-check
+08:00 → @daily-briefing@
+10:00 → @x-poster@
 ```
 
-## Weekly Tasks
+## Specialist Schedules
 
 ```
-MON 09:00 → weekly-summary
-FRI 17:00 → week-wrap-up
+*/30 → %email-scanner%
+07:00 → %news-gatherer%
 ```
 
 ## How It Works
 
-1. Orchestrator reads this schedule
+1. Coordinator reads this schedule
 2. Checks if current time matches any entry
-3. Evaluates conditions for matched workflows
-4. Runs approved workflows only
+3. Evaluates conditions for matched items
+4. Executes approved agents/workflows only
 
 ## Time Matching Rules
 
@@ -40,5 +32,5 @@ FRI 17:00 → week-wrap-up
 ## Notes
 
 - All times are in system local timezone
-- This is just a mapping - orchestrator handles all logic
+- This is just a mapping - coordinator handles all logic
 - No workflow automatically runs just because time matches

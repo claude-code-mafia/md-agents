@@ -15,14 +15,14 @@ This repository contains intelligent agents that:
 
 ## Current Agent Teams
 
-### 📱 X Poster (`/agents/x-poster/`)
+### 📱 X Poster Workflow
 
 Automatically finds and posts daily Claude Code tips to X (Twitter):
 
-- **TipFinder**: Searches X for Claude Code tips and tricks
-- **TipCurator**: Selects the best unique tip to post
-- **TweetPoster**: Formats and posts engaging tweets
-- **XPosterOrchestrator**: Coordinates the daily workflow
+- **X Tip Finder**: Searches X for Claude Code tips and tricks
+- **X Tip Curator**: Selects the best unique tip to post
+- **X Post Writer**: Formats engaging posts
+- **Session Manager**: Tracks workflow progress
 
 ## How It Works
 
@@ -35,9 +35,15 @@ Automatically finds and posts daily Claude Code tips to X (Twitter):
 
 ```
 /agents/
-  /tool-library/      # Markdown documentation for all available tools
-  /x-poster/          # X posting agent team
-    /tools/           # Team-specific tool configurations
+  /specialists/       # Individual agent definitions
+  /workflows/         # Multi-agent workflow definitions
+/tools/
+  /tool-library/      # Documentation for all available tools
+/runtime/             # Runtime environment for execution
+  /output/            # Agent outputs
+  /context/           # Shared context between agents
+/logs/                # Activity and error logs
+/scripts/             # Execution and scheduling scripts
 /docs/                # System documentation
 ```
 

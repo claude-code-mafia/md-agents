@@ -1,0 +1,71 @@
+title: MD Agents
+description: Build intelligent agent systems with markdown
+baseurl: "/md-agents"
+url: "https://peteknowsai.github.io"
+
+theme: null
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+collections:
+  docs:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "docs"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Navigation
+nav:
+  - title: Introduction
+    url: /
+  - title: Quickstart
+    url: /quickstart/
+  - title: Examples
+    url: /examples/
+    children:
+      - title: Basic Agents
+        url: /examples/basic/
+      - title: Workflows
+        url: /examples/workflows/
+      - title: Coordinators
+        url: /examples/coordinators/
+  - title: Documentation
+    url: /docs/
+    children:
+      - title: Core Concepts
+        url: /docs/concepts/
+      - title: Agent Types
+        url: /docs/agent-types/
+      - title: Notation Guide
+        url: /docs/notation/
+      - title: State Management
+        url: /docs/state/
+  - title: API Reference
+    url: /api/
+    children:
+      - title: Specialists
+        url: /api/specialists/
+      - title: Workflows
+        url: /api/workflows/
+      - title: Coordinators
+        url: /api/coordinators/
+      - title: Tools
+        url: /api/tools/
+  - title: Extensions
+    url: /extensions/

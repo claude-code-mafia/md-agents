@@ -1,71 +1,41 @@
 # Workflow: Daily Briefing
 
-This workflow creates a comprehensive morning briefing by coordinating multiple specialist agents.
+This workflow creates a morning briefing by scanning emails and gathering news.
 
-## When to Run
+## Triggers
+- **Schedule**: 0 8 * * 1-5  # 8am weekdays
+- **Command**: "prepare my daily briefing"
 
-Run this workflow when:
-- Every weekday at 8:00 AM
-- When you say "prepare my daily briefing"
-- Before starting your workday
+## Input
+- email_range: str = "24 hours"
+- news_topics: list[str]? = null  # Auto-detect from emails
 
-## The Team
-
-This workflow uses these specialist agents:
-- **Email Scanner**: Checks your inbox for important messages
-- **News Gatherer**: Finds relevant news based on your interests
-- **Summary Writer**: Combines everything into one clear briefing
-
-## The Process
+## Steps
 
 ### Step 1: Scan Emails
-- **Who**: Email Scanner
-- **What**: Check Gmail for messages from the last 24 hours
-- **Needs**: Gmail access
-- **Produces**: Categorized email summary saved to `context/email-summary.md`
+- **Execute**: %email-scanner%
+- **With**: time_range = {email_range}
+- **Get**: {email_results}
 
 ### Step 2: Gather News
-- **Who**: News Gatherer  
-- **What**: Find relevant news, using email context for topics
-- **Needs**: Email summary (to identify relevant topics)
-- **Produces**: News digest saved to `context/news-summary.md`
+- **Execute**: %news-gatherer%
+- **With**: 
+  - topics = {news_topics} or extract from {email_results.key_points}
+  - time_range = "24 hours"
+- **Get**: {news_results}
 
 ### Step 3: Create Briefing
-- **Who**: Summary Writer
-- **What**: Combine email and news summaries into unified briefing
-- **Needs**: Both summaries from steps 1 and 2
-- **Produces**: Complete briefing at `output/daily-briefing-YYYY-MM-DD.md`
+- **Execute**: %summary-writer%
+- **With**: 
+  - sources = [{email_results}, {news_results}]
+  - format = "detailed"
+- **Save**: output/daily-briefing-{timestamp}.md
 
-## Success Looks Like
+## Success
+- [ ] All steps complete
+- [ ] Briefing saved to output
 
-The workflow succeeded when:
-- [ ] Email Scanner found and categorized emails
-- [ ] News Gatherer found relevant stories
-- [ ] Summary Writer created unified briefing
-- [ ] Final output saved to output folder
-
-## If Something Goes Wrong
-
-- If Email Scanner fails: Continue with news only, note email unavailable
-- If News Gatherer fails: Create briefing with just emails
-- If Summary Writer fails: Keep individual summaries available
-- Always: Save progress so we can see what worked
-
-## Example Session
-
-```yaml
-# Start: 8:00 AM
-Email Scanner: "Found 23 emails, 3 urgent"
-News Gatherer: "Found 5 relevant stories based on your AI meeting"
-Summary Writer: "Created briefing highlighting deadline change and AI news"
-# Complete: 8:02 AM
-```
-
-## Manual Trigger
-
-To run this workflow manually:
-```bash
-# From the agents directory
-# The orchestrator will read this workflow and execute it
-Run workflow: daily-briefing
-```
+## If Things Go Wrong
+- Email scan fails: Continue with news only
+- News fails: Use just emails
+- Summary fails: Save raw results
