@@ -93,4 +93,4 @@ Merge with existing ~cache.aggregated_data~
 - ~cache.emails.*~ - Temporary email storage
 ```
 
-For more details, see [State Patterns](/docs/reference/state/patterns/) in our reference documentation.
+For more state management patterns and examples, see the [Best Practices](/best-practices/) guide.
