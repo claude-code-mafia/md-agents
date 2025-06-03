@@ -41,11 +41,9 @@ The Claude Agents project is organized with clear separation of concerns:
 │   └── /tests/                    # Test scenarios
 │
 ├── /tools/                        # External tool integrations
-│   └── /tool-library/             # Tool documentation
+│   └── /tool-library/             # CLI tool documentation
 │
 ├── /logs/                         # Execution logs
-│
-├── /mcp-servers/                  # MCP server implementations
 │
 └── /archive/                      # Old/deprecated files
 ```

@@ -1,58 +1,62 @@
 # Tool Library
 
-This directory contains markdown documentation for all MCP (Model Context Protocol) tools available to agents in this repository.
+This directory contains documentation for all CLI tools available to agents in this repository. These tools are optimized for Claude Code and are executed as command-line interfaces.
 
 ## Available Tools
 
 ### Social Media
-- **[twitter-api-mcp](./twitter-api-mcp.md)** - X/Twitter API access for searching and posting
+- **[x-tool](./x-tool.md)** - X/Twitter CLI for searching and posting (uses Typefully or other CLI tools)
 
 ### System Tools (Built into Claude Code)
-These don't need MCP servers:
-- **file-reader** - Read any file on the system
-- **file-writer** - Write content to files
-- **bash** - Execute shell commands
-- **web-fetch** - Fetch content from URLs
+- **Read** - Read any file on the system
+- **Write/Edit** - Write or modify files
+- **Bash** - Execute shell commands
+- **WebFetch** - Fetch content from URLs
+- **WebSearch** - Search the web for current information
 
 ## How Tools Work
 
-1. **Generic Documentation**: Each tool in this library has a generic `.md` file explaining its capabilities
-2. **Team Customization**: Agent teams can create customized versions in their `/tools/` folder
+1. **CLI-Based**: All tools are command-line interfaces that Claude Code executes via the Bash tool
+2. **Documentation**: Each tool has a `.md` file explaining its commands and usage
 3. **Natural Language**: Agents reference tools by name and describe what they want in plain English
+4. **Pre-installed**: Many tools come pre-installed with Claude Code (see global CLAUDE.md)
 
 ## Adding New Tools
 
-To add a new MCP tool:
+To add a new CLI tool:
 
-1. Install the MCP server:
+1. Install the tool (if needed):
    ```bash
-   npm install @mcp/your-tool-name
+   # Example: npm global install
+   npm install -g your-cli-tool
+   
+   # Or pip install
+   pip install your-python-tool
    ```
 
 2. Create documentation in this folder:
    ```markdown
    # Tool: Your Tool Name
    
-   ## Metadata
-   - Version: 1.0
-   - Type: external-api
-   - MCP-Server: your-tool-mcp
-   
    ## Purpose
    What this tool does...
    
-   ## Operations
-   List all available operations...
+   ## Installation
+   How to install if not pre-installed...
+   
+   ## Commands
+   List all available commands...
+   
+   ## Usage Examples
+   Show practical examples...
    ```
 
-3. Configure in your Claude Code MCP settings
-
-4. Reference in agent markdown:
+3. Reference in agent markdown:
    ```markdown
    ## Tools
    ### your-tool-name
    - Description: What I use this for
-   - Operations: Specific operations I need
+   - Commands: Specific commands I need
    ```
 
 ## Tool Categories

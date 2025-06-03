@@ -2,6 +2,7 @@
 layout: docs
 title: Core Concepts
 description: Understand the fundamental concepts of MD Agents
+permalink: /docs/concepts/
 ---
 
 MD Agents introduces a new paradigm: **agents as markdown specifications**. This guide covers the core concepts that make the framework powerful yet simple.

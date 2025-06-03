@@ -9,7 +9,7 @@ I scan X for recent posts about Claude Code, looking for useful tips, tricks, an
 ## What I Need
 
 To do my job, I need:
-- Access to X/Twitter API (via twitter-api-mcp)
+- Access to X/Twitter search (via CLI tools like Grok or web scraping)
 - Time range to search (default: last 48 hours)
 - Minimum engagement threshold (default: 5 likes)
 

@@ -83,9 +83,14 @@ a:hover {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--dark);
+  display: inline-block;
+  height: 40px;
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
 .header-nav {

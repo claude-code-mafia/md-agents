@@ -2,6 +2,7 @@
 layout: docs
 title: Quickstart
 description: Get up and running with MD Agents in 5 minutes
+permalink: /quickstart/
 ---
 
 This guide will walk you through creating your first agent system. By the end, you'll have a working multi-agent workflow that gathers information and creates summaries.

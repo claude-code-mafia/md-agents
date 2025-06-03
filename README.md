@@ -1,74 +1,180 @@
-# Claude Agents
+# MD Agents
 
-A markdown-based agent system where agents are defined purely in `.md` files, with tools and composition capabilities. Each agent team can work together to accomplish complex tasks through natural language specifications.
+Build intelligent agent systems with markdown. No code required.
 
-**📁 See [STRUCTURE.md](STRUCTURE.md) for project organization**
+**📖 Documentation**: https://peteknowsai.github.io/md-agents/  
+**📁 Project Structure**: See [STRUCTURE.md](STRUCTURE.md)
 
-## What This Does
+## What is MD Agents?
 
-This repository contains intelligent agents that:
+MD Agents is a framework where AI agents are defined entirely in markdown files. Instead of writing code, you describe agent behaviors in plain English, and the framework handles the execution.
 
-- Are defined entirely in markdown files
-- Can use tools (via MCP servers) to interact with external systems
-- Can compose with other agents to form teams
-- Execute complex workflows through natural language instructions
+```markdown
+# Specialist: Weather Agent
 
-## Current Agent Teams
+<<You check weather conditions and provide forecasts.>>
 
-### 📱 X Poster Workflow
+## Behavior
+1. Use [weather-api] to get current conditions
+2. Format temperature in both F and C
+3. Include forecast for next 3 days
 
-Automatically finds and posts daily Claude Code tips to X (Twitter):
+## Output
+- current_temp: int
+- conditions: str
+- forecast: list[str]
+```
 
-- **X Tip Finder**: Searches X for Claude Code tips and tricks
-- **X Tip Curator**: Selects the best unique tip to post
-- **X Post Writer**: Formats engaging posts
-- **Session Manager**: Tracks workflow progress
+## Key Features
 
-## How It Works
+✨ **Zero Code**: Define agents in markdown with natural language  
+🧩 **Composable**: Agents can invoke other agents to handle complex tasks  
+📝 **Human-Readable**: All configurations are transparent markdown files  
+⚡ **Instant Changes**: Edit markdown, see results immediately  
+🛠️ **CLI Tools**: Rich library of command-line tools optimized for Claude Code
 
-1. **Agents are Markdown**: Each agent is a `.md` file with structured sections defining its behavior
-2. **Tools via MCP**: External capabilities (APIs, databases) are provided through MCP servers
-3. **Natural Language**: Agents follow instructions written in plain English
-4. **Composition**: Agents can invoke other agents to handle complex workflows
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/peteknowsai/md-agents.git
+cd md-agents
+
+# Create your first agent
+cat > agents/specialists/hello.md << 'EOF'
+# Specialist: Hello Agent
+
+<<You greet users warmly.>>
+
+## Behavior
+1. Greet the user by name
+2. Ask how you can help today
+3. Be enthusiastic but professional
+EOF
+
+# Run the agent
+./scripts/run-agents.sh hello
+```
+
+## Agent Types
+
+### 🎯 **Specialists**
+Single-purpose agents that excel at one task
+```markdown
+%email-scanner%   # Scans for important emails
+%news-gatherer%   # Collects news on topics
+%fact-checker%    # Verifies claims
+```
+
+### 🔄 **Workflows**  
+Sequential pipelines that orchestrate multiple agents
+```markdown
+@daily-briefing@  # Morning news + email summary
+@research-flow@   # Multi-step research process
+```
+
+### 🧠 **Coordinators**
+Dynamic orchestrators that make intelligent routing decisions
+```markdown
+%research-director%  # Routes research to appropriate specialists
+%smart-assistant%    # Handles any user request intelligently
+```
+
+## Example: Daily Briefing Workflow
+
+```markdown
+# Workflow: Daily Briefing
+
+## Triggers
+- **Schedule**: 0 8 * * *  # 8am daily
+
+## Steps
+
+### Step 1: Check Email
+- **Execute**: %email-scanner%
+- **Get**: {important_emails}
+
+### Step 2: Get News  
+- **Execute**: %news-gatherer%
+- **With**: topics = ["AI", "technology"]
+- **Get**: {news}
+
+### Step 3: Create Summary
+- **Execute**: %summary-writer%
+- **With**: 
+    - emails = {important_emails}
+    - news = {news}
+- **Save**: output/daily-briefing-{date}.md
+```
+
+## Tool Library
+
+MD Agents uses CLI tools optimized for Claude Code:
+
+- **[gmail-cli]**: Read and send emails
+- **[weather-api]**: Get weather data
+- **[web-search]**: Search the web
+- **[grok]**: Analyze X/Twitter content
+- **[typefully]**: Post to social media
+- And many more in `/tools/tool-library/`
+
+Tools are executed as commands through Claude Code's Bash interface.
 
 ## Directory Structure
 
 ```
 /agents/
-  /specialists/       # Individual agent definitions
-  /workflows/         # Multi-agent workflow definitions
+  /specialists/     # Single-purpose agents
+  /workflows/       # Multi-step pipelines  
+  /coordinators/    # Dynamic orchestrators
+  /utils/          # Helper agents
+
 /tools/
-  /tool-library/      # Documentation for all available tools
-/runtime/             # Runtime environment for execution
-  /output/            # Agent outputs
-  /context/           # Shared context between agents
-/logs/                # Activity and error logs
-/scripts/             # Execution and scheduling scripts
-/docs/                # System documentation
+  /tool-library/   # CLI tool documentation
+
+/runtime/          # Execution environment
+  /output/         # Agent outputs
+  /state/          # Persistent storage
+  /sessions/       # Execution history
+
+/docs-site/        # GitHub Pages documentation
+/scripts/          # Run and schedule agents
 ```
-
-## Running Agents
-
-## Tool Library
-
-The `/agents/tool-library/` directory contains markdown documentation for all MCP tools available in this repository. Each tool has:
-
-- Installation instructions
-- Configuration requirements
-- Usage examples
-- Natural language descriptions
-
-Teams can customize tool usage by creating their own tool markdown in their team folder.
 
 ## Creating New Agents
 
-2. Place in appropriate team folder
-3. Document required tools in team's tool folder
-4. Test with Claude Code
+1. Create a markdown file in `/agents/`
+2. Define the agent's purpose and behavior
+3. Specify inputs, outputs, and error handling
+4. Test with `./scripts/run-agents.sh`
+
+See our [Quickstart Guide](https://peteknowsai.github.io/md-agents/quickstart/) for detailed instructions.
 
 ## Philosophy
 
-- **Simplicity**: Agents are just markdown files
-- **Composability**: Agents work together naturally
-- **Flexibility**: Natural language allows easy customization
-- **Transparency**: Everything is human-readable
+- **Natural Language First**: Describe what you want, not how to code it
+- **Composition Over Configuration**: Build complex systems from simple parts
+- **Transparency**: Every decision and action is readable
+- **AI-Native**: Designed for how AI understands instructions
+
+## Documentation
+
+Full documentation available at https://peteknowsai.github.io/md-agents/
+
+- [Quickstart Tutorial](https://peteknowsai.github.io/md-agents/quickstart/)
+- [Core Concepts](https://peteknowsai.github.io/md-agents/docs/concepts/)
+- [Example Gallery](https://peteknowsai.github.io/md-agents/examples/)
+- [API Reference](https://peteknowsai.github.io/md-agents/api/)
+
+## Contributing
+
+MD Agents is open source. Contributions welcome!
+
+1. Fork the repository
+2. Create your agent or enhancement
+3. Test thoroughly
+4. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
