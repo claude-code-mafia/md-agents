@@ -21,6 +21,11 @@
         <a href="{{ '/' | relative_url }}" class="logo">
           <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="md agents" height="40">
         </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav class="header-nav">
           <a href="{{ '/quickstart/' | relative_url }}">Quickstart</a>
           <a href="{{ '/examples/' | relative_url }}">Examples</a>
@@ -35,13 +40,12 @@
   </header>
   
   <div class="layout">
-    {% if page.layout == 'docs' %}
-    <aside class="sidebar">
+    <aside class="sidebar {% if page.layout != 'docs' %}sidebar-hidden{% endif %}">
+      <button class="sidebar-close" aria-label="Close menu">&times;</button>
       <nav class="sidebar-nav">
         {% include sidebar.html %}
       </nav>
     </aside>
-    {% endif %}
     
     <main class="main">
       {{ content }}
