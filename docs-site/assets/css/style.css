@@ -80,6 +80,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
+  gap: 1rem;
 }
 
 .logo {
@@ -96,6 +97,7 @@ a:hover {
 .header-nav {
   display: flex;
   gap: 2rem;
+  margin-left: auto;
 }
 
 .header-nav a {
@@ -173,6 +175,8 @@ a:hover {
   width: 40px;
   height: 40px;
   line-height: 1;
+  padding: 0;
+  z-index: 1001;
 }
 
 @media (min-width: 1024px) {
@@ -377,6 +381,13 @@ table th {
 .alert-warning {
   background: rgba(255, 193, 7, 0.1);
   border-left: 4px solid var(--warning);
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
 }
 
 /* Mobile Responsive */

@@ -46,7 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Close button
   if (sidebarClose) {
-    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarClose.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeSidebar();
+    });
   }
 
   // Close sidebar when clicking on a link (mobile)
