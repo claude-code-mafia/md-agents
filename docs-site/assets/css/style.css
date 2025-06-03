@@ -84,14 +84,28 @@ a:hover {
 }
 
 .logo {
-  display: inline-block;
-  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
-.logo img {
-  height: 100%;
-  width: auto;
-  display: block;
+.logo-text {
+  font-size: 1.5rem;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+.logo-text strong {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logo:hover .logo-text {
+  color: var(--primary);
+  text-decoration: none;
 }
 
 .header-nav {
