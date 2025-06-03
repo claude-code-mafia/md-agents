@@ -16,26 +16,26 @@ All agents follow this structure:
 <<System prompt defining agent's role>>
 
 ## Metadata
-- version: str
-- author: str  
-- tags: list[str]
+  version: str
+  author: str  
+  tags: list[str]
 
 ## Triggers
-- **Schedule**: cron expression
-- **Event**: event description
-- **Command**: command string
+  **Schedule**: cron expression
+  **Event**: event description
+  **Command**: command string
 
 ## Input
-- param_name: type = default_value
-- required_param: type
-- optional_param: type?
+  param_name: type = default_value
+  required_param: type
+  optional_param: type?
 
 ## Behavior
 Natural language instructions
 
 ## Output  
-- field_name: type
-- optional_field: type?
+  field_name: type
+  optional_field: type?
 
 ## Error Handling
 Error scenarios and recovery
@@ -188,9 +188,9 @@ Tools are defined in `/tools/tool-library/`:
 Command-line interface for Gmail
 
 ## Commands
-- list: List emails
-- read: Read specific email  
-- send: Send new email
+  list: List emails
+  read: Read specific email  
+  send: Send new email
 
 ## Usage
 [gmail-cli] list --unread --limit 10
@@ -221,12 +221,12 @@ Command-line interface for Gmail
 
 ```markdown
 ### Step 2: Process Data
-- **Execute**: %data-processor%
-- **With**: 
-    - data = {raw_data}
-    - format = "json"
-- **Get**: {processed}
-- **Save**: output/processed-{timestamp}.json
+  **Execute**: %data-processor%
+  **With**: 
+    data = {raw_data}
+    format = "json"
+  **Get**: {processed}
+  **Save**: output/processed-{timestamp}.json
 ```
 
 ## Error Handling
@@ -235,28 +235,28 @@ Command-line interface for Gmail
 
 ```markdown
 ## Error Handling
-- **On API timeout**: 
-  - Retry 3 times with exponential backoff
-  - Use cached data if available
-  - Log failure to ~memory.errors~
+  **On API timeout**: 
+    Retry 3 times with exponential backoff
+    Use cached data if available
+    Log failure to ~memory.errors~
   
-- **On invalid input**:
-  - Return error: ::InvalidInputError::
-  - Suggest corrections
+  **On invalid input**:
+    Return error: ::InvalidInputError::
+    Suggest corrections
   
-- **Always**:
-  - Update ~session.last_error~
-  - Maintain partial results
+  **Always**:
+    Update ~session.last_error~
+    Maintain partial results
 ```
 
 ### Error Types
 
 ```markdown
 ### ::Error::
-- code: str
-- message: str  
-- retryable: bool
-- details: object?
+  code: str
+  message: str  
+  retryable: bool
+  details: object?
 ```
 
 ## Scheduling
@@ -311,60 +311,61 @@ Command-line interface for Gmail
 <<You intelligently process emails with advanced filtering.>>
 
 ## Metadata
-- version: 1.0.0
-- author: md agents Team
-- tags: [email, automation, productivity]
+  version: 1.0.0
+  author: md agents Team
+  tags: [email, automation, productivity]
 
 ## Triggers
-- **Schedule**: */30 * * * *  # Every 30 minutes
-- **Event**: When email received
-- **Command**: "process emails"
+  **Schedule**: */30 * * * *  # Every 30 minutes
+  **Event**: When email received
+  **Command**: "process emails"
 
 ## Input
-- time_range: str = "30 minutes"
-- categories: list[str] = ["urgent", "important", "fyi"]
-- auto_respond: bool = false
+  time_range: str = "30 minutes"
+  categories: list[str] = ["urgent", "important", "fyi"]
+  auto_respond: bool = false
 
 ## Behavior
 
 1. Fetch emails from {time_range} using [gmail-cli]
 2. For each email:
-   - Extract sender, subject, and key phrases
-   - Check against ~memory.vip_senders~
-   - Classify into {categories}
+   Extract sender, subject, and key phrases
+   Check against ~memory.vip_senders~
+   Classify into {categories}
    
 3. Process by priority:
-   - Urgent: Notify immediately
-   - Important: Add to task list
-   - FYI: Archive after summary
+   Urgent: Notify immediately
+   Important: Add to task list
+   FYI: Archive after summary
 
 4. If {auto_respond} is true:
-   - Generate contextual response
-   - Queue for sending with delay
+   Generate contextual response
+   Queue for sending with delay
 
 5. Update statistics in ~memory.stats~
 
 ## Output
-- processed_count: int
-- urgent_items: list[::EmailSummary::]
-- actions_taken: dict[str, int]
+  processed_count: int
+  urgent_items: list[::EmailSummary::]
+  actions_taken: dict[str, int]
 
 ## Error Handling
-- **On Gmail API error**: 
-  - Retry with backoff
-  - Use cached email list
-  - Alert user after 3 failures
+  **On Gmail API error**: 
+    Retry with backoff
+    Use cached email list
+    Alert user after 3 failures
   
-- **On classification error**:
-  - Default to "important" category
-  - Log for manual review
+  **On classification error**:
+    Default to "important" category
+    Log for manual review
   
-- **Always**:
-  - Save partial progress
-  - Report what was completed
+  **Always**:
+    Save partial progress
+    Report what was completed
 ```
 
 For detailed examples of each component type, see:
+
 - [Specialist Reference](/api/specialists/)
 - [Workflow Reference](/api/workflows/)
 - [Coordinator Reference](/api/coordinators/)
