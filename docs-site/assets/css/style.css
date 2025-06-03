@@ -447,6 +447,46 @@ table th {
   display: block;
 }
 
+/* Copy Button */
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+pre:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: var(--light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.copy-btn.copied {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* Syntax Highlighting */
 .highlight .c { color: #6a737d; } /* Comment */
 .highlight .k { color: #d73a49; } /* Keyword */

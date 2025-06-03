@@ -90,30 +90,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Copy code blocks on click
+  // Add copy buttons to code blocks
   document.querySelectorAll('pre').forEach(block => {
     // Create copy button
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
-    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-    copyBtn.style.cssText = 'position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.25rem 0.5rem; background: var(--secondary); color: white; border: none; border-radius: 3px; cursor: pointer; opacity: 0; transition: opacity 0.3s;';
+    copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.5 1h-6A1.5 1.5 0 0 0 3 2.5v9A1.5 1.5 0 0 0 4.5 13H5v-1h-.5a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5V3h1v-.5A1.5 1.5 0 0 0 10.5 1z"/><path d="M11.5 4h-6A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16h6a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 11.5 4zm.5 10.5a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v9z"/></svg>';
+    copyBtn.setAttribute('aria-label', 'Copy code');
     
     // Make pre position relative for absolute button
     block.style.position = 'relative';
     block.appendChild(copyBtn);
     
-    // Show button on hover
-    block.addEventListener('mouseenter', () => copyBtn.style.opacity = '1');
-    block.addEventListener('mouseleave', () => copyBtn.style.opacity = '0');
-    
     copyBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      const code = block.textContent.replace('', ''); // Remove copy icon
+      e.preventDefault();
+      
+      // Get the text content without the button text
+      const codeElement = block.querySelector('code') || block;
+      const code = codeElement.textContent;
+      
       navigator.clipboard.writeText(code).then(() => {
-        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
+        
         setTimeout(() => {
-          copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.5 1h-6A1.5 1.5 0 0 0 3 2.5v9A1.5 1.5 0 0 0 4.5 13H5v-1h-.5a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5V3h1v-.5A1.5 1.5 0 0 0 10.5 1z"/><path d="M11.5 4h-6A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16h6a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 11.5 4zm.5 10.5a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v9z"/></svg>';
         }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
       });
     });
   });
