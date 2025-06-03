@@ -178,3 +178,5 @@ MD Agents is open source. Contributions welcome!
 ## License
 
 MIT License - see LICENSE file for details
+
+<!-- Test commit: folder rename verification -->
