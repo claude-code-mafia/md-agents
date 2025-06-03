@@ -164,7 +164,8 @@ a:hover {
   background: var(--light);
   border-right: 1px solid var(--border-color);
   padding: 2rem 0;
-  position: sticky;
+  position: fixed;
+  left: 0;
   top: 60px;
   height: calc(100vh - 60px);
   overflow-y: auto;
@@ -257,6 +258,12 @@ a:hover {
   flex: 1;
   padding: 2rem 3rem;
   max-width: 900px;
+  margin-left: 260px;
+}
+
+/* When sidebar is hidden, remove the margin */
+.sidebar-hidden ~ .main {
+  margin-left: 0;
 }
 
 /* Code Blocks */
