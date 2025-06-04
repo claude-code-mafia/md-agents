@@ -179,7 +179,7 @@ Clear ~cache.temp_data~
 
 ### Tool Declaration
 
-Tools are defined in `/tools/tool-library/`:
+Tools are defined in `/tool-library/`:
 
 ```markdown
 # Tool: [gmail-cli]

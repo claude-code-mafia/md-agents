@@ -18,7 +18,7 @@
 - ✅ No hardcoded absolute paths found
 
 ### 4. Documentation
-- ✅ Root `CLAUDE.md` - Updated to reference `/tools/tool-library/`
+- ✅ Root `CLAUDE.md` - Updated to reference `/tool-library/`
 - ✅ `README.md` - Updated directory structure
 - ✅ `STRUCTURE.md` - Accurately describes new layout
 - ✅ Quick-start guide - Correct agent paths
@@ -26,7 +26,7 @@
 ### 5. Cross-References
 - ✅ Runtime can access agents via `../agents/`
 - ✅ Logs are at root level `/logs/`
-- ✅ Tools documentation moved to `/tools/tool-library/`
+- ✅ Tools documentation moved to `/tool-library/`
 - ✅ No references to old `scheduled-tasks` directory
 - ✅ No references to old `agents/output` or `agents/logs`
 

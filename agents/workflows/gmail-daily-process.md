@@ -13,6 +13,11 @@ This workflow processes your emails systematically, applying labels and creating
 
 ## Steps
 
+### Step 0: Get Current Timestamp
+- **Execute**: [current-time]
+- **Purpose**: Get timestamp for file naming
+- **Get**: {timestamp}
+
 ### Step 1: Analyze Recent Activity
 - **Execute**: [gmail analyze --days 1 --json]
 - **Purpose**: Get overview of email volume and patterns

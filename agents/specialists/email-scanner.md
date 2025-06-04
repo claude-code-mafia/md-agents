@@ -13,11 +13,12 @@
 
 ## Behavior
 
-1. Use [gmail-cli] to fetch emails from {time_range}
+1. Use [gmail] to fetch emails from {time_range}
 2. Scan each email for urgency indicators:
    - Subject keywords (URGENT, ASAP, deadline)
    - Known important senders from ~memory.vip_senders~
    - Meeting invites and calendar items
+   - Use [gcal] to check for conflicts when calendar invites are found
 3. Categorize as urgent/important/fyi
 4. Update ~memory.stats.emails_processed~
 

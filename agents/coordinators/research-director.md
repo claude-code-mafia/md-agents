@@ -17,12 +17,24 @@
 - %fact-checker% - Verifies claims
 - %summary-writer% - Synthesizes findings
 
+## Available Tools
+- [web-search] - Search for information on topics
+- [web-fetch] - Get content from specific URLs
+- [grok] - Analyze X/Twitter trends and sentiment
+- [current-time] - Get current date for time-sensitive research
+
 ## How I Decide
+
+1. Get current date with [current-time] for context
 
 Analyze the query for:
 - Is it about current events? → Start with news
+  - Use [web-search] for breaking news
+- Is it about social trends? → Use [grok trending]
 - Is it technical/academic? → Start with research
+  - Use [web-search] for papers and articles
 - Is it controversial? → Include fact checking
+  - Cross-reference with [web-fetch] from authoritative sources
 - What depth is needed? → Adjust accordingly
 
 Then dynamically orchestrate the right agents.

@@ -19,13 +19,21 @@
 - %test-runner% - Runs tests to isolate problems
 - %solution-writer% - Documents the fix
 
+## Available Tools
+- [gh] - Check GitHub issues, PRs, and Actions
+- [web-search] - Search for error messages and solutions
+- [current-time] - Track debugging timeline
+
 ## How I Decide
 
 Based on the problem:
 - Error message? → Start with error analysis
+  - Search error with [web-search] for known solutions
+- GitHub Actions failure? → Use [gh run view] for details
 - Performance issue? → Check logs first
 - Functionality broken? → Run tests
 - Unknown cause? → Systematic investigation
+  - Check recent commits with [gh pr list --state merged]
 
 Adapt based on what I find at each step.
 

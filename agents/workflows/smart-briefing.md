@@ -12,6 +12,11 @@ This workflow creates an intelligent briefing by using dynamic research.
 
 ## Steps
 
+### Step 0: Get Current Timestamp
+- **Execute**: [current-time]
+- **Purpose**: Get timestamp for file naming
+- **Get**: {timestamp}
+
 ### Step 1: Scan Communications
 - **Execute**: %email-scanner%
 - **With**: time_range = "48 hours"

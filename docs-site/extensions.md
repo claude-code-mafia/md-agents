@@ -11,7 +11,7 @@ md agents is designed to be extensible. Add new capabilities by creating custom 
 
 To add a new CLI tool:
 
-1. **Document the tool** in `/tools/tool-library/[tool-name].md`
+1. **Document the tool** in `/tool-library/[tool-name].md`
 2. **Include**:
    - Installation instructions
    - Available commands

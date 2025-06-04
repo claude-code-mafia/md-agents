@@ -16,7 +16,7 @@ You are working on a markdown-based agent system where agents are defined purely
 
 ## Key Conventions
 - Agents organized in `/agents/specialists/`, `/agents/workflows/`, and `/agents/coordinators/`
-- Tool documentation in `/tools/tool-library/`
+- Tool documentation in `/tool-library/`
 - Outputs saved to `/runtime/output/`
 - Logs saved to `/logs/`
 

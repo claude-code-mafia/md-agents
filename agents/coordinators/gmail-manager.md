@@ -17,7 +17,6 @@
 - %draft-composer% - Create reply drafts
 - %email-scanner% - Quick inbox scan (existing)
 - [gmail] - Direct Gmail CLI access
-- [gmail-advanced] - Bulk operations and analysis
 
 ## Decision Logic
 

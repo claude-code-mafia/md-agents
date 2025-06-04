@@ -12,7 +12,7 @@ Check if current date is a major holiday when we might want to skip certain work
 - Christmas Day (December 25)
 
 ## Instructions
-1. Get current date using time tool
+1. Get current date using [current-time]
 2. Check if it matches any major holiday
 3. Return "HOLIDAY" if match found
 4. Return "REGULAR" if not a holiday

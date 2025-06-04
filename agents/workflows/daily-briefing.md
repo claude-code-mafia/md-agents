@@ -12,6 +12,11 @@ This workflow creates a morning briefing by scanning emails and gathering news.
 
 ## Steps
 
+### Step 0: Get Current Timestamp
+- **Execute**: [current-time]
+- **Purpose**: Get timestamp for file naming
+- **Get**: {timestamp}
+
 ### Step 1: Scan Emails
 - **Execute**: %email-scanner%
 - **With**: time_range = {email_range}

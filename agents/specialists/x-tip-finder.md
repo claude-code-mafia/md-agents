@@ -9,13 +9,13 @@ I scan X for recent posts about Claude Code, looking for useful tips, tricks, an
 ## What I Need
 
 To do my job, I need:
-- Access to X/Twitter search (via CLI tools like Grok or web scraping)
+- Access to X/Twitter search via [grok] command for real-time analysis
 - Time range to search (default: last 48 hours)
 - Minimum engagement threshold (default: 5 likes)
 
 ## How I Work
 
-1. First, I search X using multiple Claude Code related queries
+1. First, I search X using [grok trending --category tech] and [grok analyze] for Claude Code related content
 2. Then, I filter out low-quality content (replies, low engagement)
 3. Finally, I rank posts by relevance and engagement
 

@@ -21,7 +21,16 @@
 - %risk-assessor% - Identifies potential issues
 - %plan-writer% - Creates actionable plan
 
+## Available Tools
+- [current-time] - Get current date for timeline planning
+- [gcal] - Check calendar availability and schedule
+- [gh] - Check GitHub for existing issues/PRs
+
 ## How I Decide
+
+1. Get current date with [current-time] for timeline baseline
+2. Check calendar with [gcal find-times] for team availability
+3. If technical project, check [gh repo view] for context
 
 Analyze project complexity:
 - Simple project? → Quick breakdown and estimation

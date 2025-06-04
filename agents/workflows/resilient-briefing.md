@@ -12,6 +12,11 @@ This workflow creates a daily briefing that handles failures gracefully.
 
 ## Steps
 
+### Step 0: Get Current Timestamp
+- **Execute**: [current-time]
+- **Purpose**: Get timestamp for file naming
+- **Get**: {timestamp}
+
 ### Step 1: Try Email Scan
 - **Execute**: %email-scanner%
 - **With**: time_range = {email_range}

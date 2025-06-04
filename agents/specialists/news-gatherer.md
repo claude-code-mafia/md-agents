@@ -14,7 +14,9 @@
 ## Behavior
 
 1. Check ~global.urgent_topics~ for priority subjects
-2. Search for news on each topic using web search
+2. Check for available news/RSS tools:
+   - If MCP news/RSS service available, use that
+   - Otherwise, search for news on each topic using web search
 3. Filter by recency and relevance
 4. Summarize key points from each article
 5. Store found topics in ~memory.trending_topics~

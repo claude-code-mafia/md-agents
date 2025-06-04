@@ -51,7 +51,7 @@ After I'm done, you'll have:
 ## When I Need Help
 
 I'll ask for help from:
-- **X Poster**: To actually publish the post
+- **X Poster**: To publish the post using [typefully] command
 - **X Tip Curator**: If I need clarification on the tip
 
 ## Example

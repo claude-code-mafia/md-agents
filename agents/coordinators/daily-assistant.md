@@ -22,11 +22,14 @@
 
 ## How I Decide
 
+First, check current time with [current-time] to understand context.
+
 Analyze the request:
 - Morning routine? → Run appropriate briefing
 - Specific question? → Use research or problem solver
 - Task management? → Use task planner
 - Quick check? → Use individual specialist
+- Calendar related? → Use [gcal] for availability
 
 Time of day matters:
 - Morning: Favor briefings
@@ -45,17 +48,23 @@ Update ~memory.last_assistance~ with what I did
 ## Example Patterns
 
 ### "Good morning"
-If before 9am and no briefing today:
-  Execute @smart-briefing@ with their preferences
-Else:
-  Quick status with %email-scanner%
+1. Get current time with [current-time]
+2. Check calendar with [gcal list --today] for schedule
+3. If before 9am and no briefing today:
+   Execute @smart-briefing@ with their preferences
+4. Else:
+   Quick status with %email-scanner%
+5. Show today's calendar highlights
 
 ### "What should I focus on?"
 1. Check ~global.urgent_topics~
-2. Scan emails with %email-scanner%
-3. If complex items found:
+2. Check calendar with [gcal list] for upcoming meetings
+3. Scan emails with %email-scanner%
+4. If calendar conflicts found:
+   Use [gcal find-times] to suggest rescheduling
+5. If complex items found:
    Use %task-planner% to break them down
-4. Present prioritized list
+6. Present prioritized list with time constraints
 
 ### "Research [topic] for my meeting"
 1. Note meeting context

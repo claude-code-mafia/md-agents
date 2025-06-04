@@ -40,7 +40,7 @@ grep "email-scanner" logs/activity.log
 
 **Solutions**:
 - Verify tool is installed
-- Check tool documentation in `/tools/tool-library/`
+- Check tool documentation in `/tool-library/`
 - Ensure tool is in PATH
 - Test tool directly in terminal
 

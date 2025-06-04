@@ -116,7 +116,7 @@ MD Agents uses CLI tools optimized for Claude Code:
 - **[web-search]**: Search the web
 - **[grok]**: Analyze X/Twitter content
 - **[typefully]**: Post to social media
-- And many more in `/tools/tool-library/`
+- And many more in `/tool-library/`
 
 Tools are executed as commands through Claude Code's Bash interface.
 
@@ -129,8 +129,7 @@ Tools are executed as commands through Claude Code's Bash interface.
   /coordinators/    # Dynamic orchestrators
   /utils/          # Helper agents
 
-/tools/
-  /tool-library/   # CLI tool documentation
+/tool-library/     # CLI tool documentation
 
 /runtime/          # Execution environment
   /output/         # Agent outputs

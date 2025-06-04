@@ -12,9 +12,11 @@
 
 ## Behavior
 
-1. Search for weather using web search:
-   - "[location] weather [forecast_type]"
-   - "[location] weather alerts"
+1. Check for available weather tools:
+   - If MCP weather service available, use that
+   - Otherwise, search for weather using web search:
+     - "[location] weather [forecast_type]"
+     - "[location] weather alerts"
 2. Extract key information:
    - Temperature (current and feels like)
    - Precipitation chance and timing

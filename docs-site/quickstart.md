@@ -191,7 +191,7 @@ Now that you have a working system:
 </div>
 
 <div class="alert alert-info">
-<strong>Tool errors?</strong> Ensure tools are configured in `/tools/tool-library/`.
+<strong>Tool errors?</strong> Ensure tools are configured in `/tool-library/`.
 </div>
 
 <div class="alert alert-info">

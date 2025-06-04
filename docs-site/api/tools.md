@@ -5,7 +5,7 @@ description: CLI tools available in md agents
 permalink: /api/tools/
 ---
 
-md agents uses command-line tools that are executed through Claude Code's Bash interface. All tools are documented in `/tools/tool-library/`.
+md agents uses command-line tools that are executed through Claude Code's Bash interface. All tools are documented in `/tool-library/`.
 
 ## Tool Format
 
@@ -37,7 +37,7 @@ Run [tool-name {parameter}]
 
 ## Tool Documentation
 
-Each tool in `/tools/tool-library/` includes:
+Each tool in `/tool-library/` includes:
 - Installation instructions
 - Available commands
 - Example usage
@@ -56,9 +56,9 @@ Each tool in `/tools/tool-library/` includes:
 ## Custom Tools
 
 To add a new tool:
-1. Create documentation in `/tools/tool-library/`
+1. Create documentation in `/tool-library/`
 2. Include installation steps
 3. Provide usage examples
 4. Test with an agent
 
-See the Tool Library in `/tools/tool-library/` for all available tools.
+See the Tool Library in `/tool-library/` for all available tools.
