@@ -3,6 +3,17 @@ description: Build intelligent agent systems with markdown
 baseurl: "/md-agents"
 url: "https://peteknowsai.github.io"
 
+# SEO and social media
+author: peteknowsai
+social:
+  name: md agents framework
+  links:
+    - https://github.com/peteknowsai/md-agents
+
+# Open Graph defaults
+defaults_meta:
+  image: /assets/img/logo.png
+
 theme: null
 
 plugins:
