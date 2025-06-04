@@ -1,0 +1,5 @@
+#!/bin/bash
+# tiktok-tool CLI wrapper
+cd /Users/pete/Projects/tool-library/tiktok-tool
+source venv/bin/activate 2>/dev/null
+exec python3 tiktok.py "$@"

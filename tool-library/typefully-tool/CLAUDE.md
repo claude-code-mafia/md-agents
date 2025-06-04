@@ -6,6 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The typefully-tool is currently an empty directory awaiting implementation. Based on the tool library structure, this should become a CLI tool for interacting with Typefully's API.
 
+## Important: Character Limits for Threads
+- **Keep individual tweets in threads under 280 characters**
+- Use concise language and abbreviations when needed
+- Split longer content across multiple tweets in the thread
+- When creating threads with --threadify, ensure each tweet segment is <280 chars
+
 ## Expected Implementation
 
 When implementing this tool, follow the established patterns from other tools in the library:
