@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 🧩 md agents - Markdown-Based Agent Framework
+title: 🧩 md agents framework
 ---
 
 # Build intelligent agents with markdown

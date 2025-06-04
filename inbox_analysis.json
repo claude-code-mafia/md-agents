@@ -1,0 +1,215 @@
+{
+  "total_messages": 159,
+  "date_range": "7 days",
+  "labels": {
+    "UNREAD": 45,
+    "CATEGORY_UPDATES": 86,
+    "INBOX": 48,
+    "IMPORTANT": 51,
+    "SENT": 25,
+    "CATEGORY_PERSONAL": 30,
+    "CATEGORY_PROMOTIONS": 16,
+    "DRAFT": 2,
+    "STARRED": 1,
+    "Label_1709321993789383653": 5
+  },
+  "hourly_distribution": {
+    "17": 15,
+    "0": 7,
+    "23": 11,
+    "16": 13,
+    "20": 10,
+    "15": 11,
+    "9": 7,
+    "14": 10,
+    "13": 5,
+    "11": 12,
+    "3": 3,
+    "19": 7,
+    "18": 13,
+    "8": 8,
+    "2": 1,
+    "5": 1,
+    "12": 3,
+    "6": 3,
+    "21": 2,
+    "10": 8,
+    "22": 2,
+    "7": 1,
+    "4": 1
+  },
+  "daily_distribution": {
+    "Tuesday": 55,
+    "Wednesday": 30,
+    "Monday": 21,
+    "Sunday": 9,
+    "Saturday": 8,
+    "Friday": 20,
+    "Thursday": 11
+  },
+  "thread_sizes": {},
+  "top_senders": [
+    [
+      "petefromsf@gmail.com",
+      18
+    ],
+    [
+      "no-reply@substack.com",
+      7
+    ],
+    [
+      "noreply@messaging.squareup.com",
+      6
+    ],
+    [
+      "no-reply@accounts.google.com",
+      5
+    ],
+    [
+      "support@npmjs.com",
+      5
+    ],
+    [
+      "fidelitydemo@outlook.com",
+      5
+    ],
+    [
+      "jason@realpeoplereallife.org",
+      5
+    ],
+    [
+      "noreply@candidates.workablemail.com",
+      5
+    ],
+    [
+      "brandon@torchlightsoftware.com",
+      3
+    ],
+    [
+      "lenny@substack.com",
+      3
+    ],
+    [
+      "team@raycast.com",
+      3
+    ],
+    [
+      "aaronmarkcohen@gmail.com",
+      3
+    ],
+    [
+      "hello@cal.com",
+      2
+    ],
+    [
+      "tadas@s.pulsemcp.com",
+      2
+    ],
+    [
+      "no.reply.alerts@chase.com",
+      2
+    ],
+    [
+      "hello@ffwd.org",
+      2
+    ],
+    [
+      "noreply@x.ai",
+      2
+    ],
+    [
+      "noreply@github.com",
+      2
+    ],
+    [
+      "help@welcometothejungle.com",
+      2
+    ],
+    [
+      "lenny+how-i-ai@substack.com",
+      2
+    ]
+  ],
+  "top_domains": [
+    [
+      "gmail.com",
+      23
+    ],
+    [
+      "substack.com",
+      13
+    ],
+    [
+      "messaging.squareup.com",
+      7
+    ],
+    [
+      "accounts.google.com",
+      5
+    ],
+    [
+      "npmjs.com",
+      5
+    ],
+    [
+      "outlook.com",
+      5
+    ],
+    [
+      "realpeoplereallife.org",
+      5
+    ],
+    [
+      "candidates.workablemail.com",
+      5
+    ],
+    [
+      "ffwd.org",
+      4
+    ],
+    [
+      "github.com",
+      4
+    ],
+    [
+      "torchlightsoftware.com",
+      3
+    ],
+    [
+      "raycast.com",
+      3
+    ],
+    [
+      "supabase.com",
+      3
+    ],
+    [
+      "cal.com",
+      2
+    ],
+    [
+      "stripe.com",
+      2
+    ],
+    [
+      "s.pulsemcp.com",
+      2
+    ],
+    [
+      "chase.com",
+      2
+    ],
+    [
+      "help-messaging.squareup.com",
+      2
+    ],
+    [
+      "x.ai",
+      2
+    ],
+    [
+      "welcometothejungle.com",
+      2
+    ]
+  ]
+}
