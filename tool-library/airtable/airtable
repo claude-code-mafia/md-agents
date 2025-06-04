@@ -1,0 +1,13 @@
+#!/bin/bash
+# Airtable CLI wrapper that uses virtual environment
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Check if venv exists
+if [ ! -d "$SCRIPT_DIR/venv" ]; then
+    echo "Virtual environment not found. Running setup..." >&2
+    "$SCRIPT_DIR/setup.sh"
+fi
+
+# Run with virtual environment Python
+exec "$SCRIPT_DIR/venv/bin/python" "$SCRIPT_DIR/airtable.py" "$@"

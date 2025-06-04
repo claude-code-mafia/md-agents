@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper for Google Calendar CLI with short name
+exec /Users/pete/Projects/tool-library/google-calendar/venv/bin/python /Users/pete/Projects/tool-library/google-calendar/gcal_cli.py "$@"

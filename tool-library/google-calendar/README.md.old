@@ -1,0 +1,292 @@
+# Google Calendar CLI
+
+A comprehensive command-line interface for Google Calendar with support for events, calendars, scheduling, and advanced features.
+
+## Installation
+
+```bash
+./install-tool.sh google-calendar
+```
+
+This will:
+1. Set up a Python virtual environment
+2. Install all dependencies
+3. Create the global `gcal` command
+4. Guide you through Google Calendar API setup
+
+## Initial Setup
+
+Before using the tool, you need to set up Google Calendar API access:
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the Google Calendar API
+4. Create OAuth 2.0 credentials (Desktop application type)
+5. Download `credentials.json` to `~/.gcal-cli/credentials.json`
+
+The tool will guide you through OAuth authentication on first use.
+
+## Usage
+
+### Basic Commands
+
+#### List Events
+```bash
+# List next 10 events
+gcal list
+
+# List events with search
+gcal list -s "meeting" -n 20
+
+# List events in date range
+gcal list --from "2025-01-01" --to "2025-01-31"
+
+# Show event IDs
+gcal list --show-id
+```
+
+#### Create Events
+```bash
+# Create a simple event
+gcal create "Team Meeting" "2025-01-15 14:00"
+
+# Create with end time and details
+gcal create "Project Review" "2025-01-15 14:00" -e "2025-01-15 15:30" \
+  -d "Quarterly review" -l "Conference Room A"
+
+# Create all-day event
+gcal create "Company Holiday" "2025-07-04" --all-day
+
+# Create with attendees and reminders
+gcal create "Design Review" "2025-01-20 10:00" \
+  -a john@example.com jane@example.com \
+  -r 10m 1h  # 10 minutes and 1 hour before
+
+# Create recurring event
+gcal create "Weekly Standup" "2025-01-06 09:00" \
+  --recurrence "FREQ=WEEKLY;BYDAY=MO,WE,FR"
+```
+
+#### Quick Add (Natural Language)
+```bash
+# Use natural language to create events
+gcal quick "Coffee with John tomorrow at 3pm"
+gcal quick "Team lunch every Friday at noon"
+gcal quick "Dentist appointment next Tuesday 2-3pm"
+```
+
+#### Update Events
+```bash
+# Update event title
+gcal update EVENT_ID -s "New Title"
+
+# Update time and location
+gcal update EVENT_ID --start "2025-01-20 15:00" -l "Room 201"
+
+# Change event color
+gcal update EVENT_ID --color 5  # Banana yellow
+```
+
+#### Delete Events
+```bash
+gcal delete EVENT_ID
+gcal delete EVENT_ID --no-notify  # Don't notify attendees
+```
+
+### Calendar Management
+
+```bash
+# List all calendars
+gcal calendars list
+
+# Create new calendar
+gcal calendars create "Personal Projects" -d "Track personal work"
+
+# Delete calendar
+gcal calendars delete CALENDAR_ID
+```
+
+### Free/Busy Check
+
+```bash
+# Check availability for next week
+gcal busy "2025-01-13" "2025-01-17"
+
+# Check multiple calendars
+gcal busy "2025-01-13 09:00" "2025-01-13 17:00" \
+  -c primary work@example.com team@example.com
+```
+
+### Import/Export
+
+```bash
+# Import ICS file
+gcal import calendar.ics
+gcal import events.ics -c "Work Calendar"
+
+# Export calendar
+gcal export  # Exports to calendar_export_TIMESTAMP.ics
+gcal export -o my_calendar.ics --from "2025-01-01" --to "2025-12-31"
+```
+
+## Advanced Features
+
+### Calendar Analysis
+```bash
+# Analyze calendar patterns
+gcal-advanced analyze
+gcal-advanced analyze -d 90  # Analyze 90 days
+
+# Output in JSON for processing
+gcal-advanced analyze --json | jq '.busiest_day'
+```
+
+### Find Meeting Times
+```bash
+# Find 60-minute slots with multiple attendees
+gcal-advanced find-times 60 -a john@example.com jane@example.com
+
+# Search next 14 days with custom hours
+gcal-advanced find-times 30 -a team@example.com -d 14 \
+  --start-hour 10 --end-hour 16
+```
+
+### Batch Operations
+```bash
+# Create multiple events from JSON file
+gcal-advanced batch-create events.json
+
+# Example events.json:
+[
+  {
+    "summary": "Sprint Planning",
+    "start": "2025-01-06 10:00",
+    "end": "2025-01-06 11:00",
+    "description": "Plan sprint 23",
+    "attendees": ["team@example.com"]
+  },
+  {
+    "summary": "Sprint Retro",
+    "start": "2025-01-17 15:00",
+    "end": "2025-01-17 16:00",
+    "all_day": false
+  }
+]
+```
+
+### Export to CSV
+```bash
+# Export calendar to CSV for analysis
+gcal-advanced export-csv
+gcal-advanced export-csv -o january_events.csv \
+  --from "2025-01-01" --to "2025-01-31"
+```
+
+### Calendar Sync
+```bash
+# Sync events between calendars
+gcal-advanced sync SOURCE_CALENDAR_ID TARGET_CALENDAR_ID
+
+# Sync with custom prefix
+gcal-advanced sync personal@gmail.com work@company.com \
+  --prefix "[Personal] " -d 60
+```
+
+### Cleanup Old Events
+```bash
+# Delete events older than 1 year
+gcal-advanced cleanup
+
+# Delete events older than 90 days
+gcal-advanced cleanup -d 90
+```
+
+## Event Colors
+
+The tool supports Google Calendar's color scheme:
+
+- 1: Lavender
+- 2: Sage
+- 3: Grape
+- 4: Flamingo
+- 5: Banana
+- 6: Tangerine
+- 7: Peacock
+- 8: Graphite
+- 9: Blueberry
+- 10: Basil
+- 11: Tomato
+
+## Reminder Formats
+
+When creating events with reminders, use these formats:
+- `10m` - 10 minutes before
+- `1h` - 1 hour before
+- `1d` - 1 day before
+
+## Recurrence Rules
+
+For recurring events, use RRULE format:
+- Daily: `FREQ=DAILY;COUNT=10`
+- Weekly: `FREQ=WEEKLY;BYDAY=MO,WE,FR`
+- Monthly: `FREQ=MONTHLY;BYMONTHDAY=15`
+- Yearly: `FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1`
+
+## Tips and Tricks
+
+### Command Aliases
+Add to your shell configuration:
+```bash
+alias cal='gcal list'
+alias meeting='gcal create'
+alias busy='gcal busy'
+```
+
+### Quick Scheduling
+```bash
+# Check availability and create meeting
+gcal busy "tomorrow" "tomorrow" && \
+gcal create "Quick sync" "tomorrow 14:00" -a colleague@example.com
+```
+
+### JSON Output for Automation
+```bash
+# Get today's events as JSON
+gcal list --json | jq '.[] | select(.start.dateTime | startswith("2025-01-06"))'
+
+# Count meetings with specific person
+gcal list -n 100 --json | jq '[.[] | select(.attendees[]?.email == "boss@example.com")] | length'
+```
+
+### Integration with Other Tools
+```bash
+# Create event from clipboard
+gcal quick "$(pbpaste)"
+
+# Export and analyze in spreadsheet
+gcal-advanced export-csv -o ~/Desktop/calendar.csv
+```
+
+## Troubleshooting
+
+### Authentication Issues
+- Delete `~/.gcal-cli/token.pickle` and re-authenticate
+- Ensure credentials.json is valid and in the correct location
+- Check that the Google Calendar API is enabled in your project
+
+### Permission Errors
+- Verify you have appropriate access to the calendar
+- For shared calendars, ensure you have write permissions
+- Check calendar sharing settings in Google Calendar web interface
+
+### Rate Limiting
+- The tool implements basic rate limiting
+- For bulk operations, consider using batch commands
+- If you hit quota limits, wait a few minutes and retry
+
+## Privacy and Security
+
+- Credentials are stored locally in `~/.gcal-cli/`
+- No data is sent to third parties
+- OAuth tokens can be revoked at any time via Google Account settings
+- Use calendar-specific access when possible instead of primary calendar

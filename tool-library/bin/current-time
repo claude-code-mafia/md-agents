@@ -1,0 +1,3 @@
+#!/bin/bash
+# Current Time CLI wrapper (avoiding 'time' shell builtin conflict)
+exec /Users/pete/Projects/tool-library/time-tool/get-current-time.sh "$@"

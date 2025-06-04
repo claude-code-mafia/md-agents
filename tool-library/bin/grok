@@ -1,0 +1,3 @@
+#!/bin/bash
+# Grok CLI wrapper
+exec /Users/pete/Projects/tool-library/grok-tool/grok_cli.py "$@"

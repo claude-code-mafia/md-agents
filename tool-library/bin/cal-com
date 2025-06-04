@@ -1,0 +1,3 @@
+#!/bin/bash
+# cal-com CLI wrapper
+exec /Users/pete/Projects/tool-library/cal-com/venv/bin/python /Users/pete/Projects/tool-library/cal-com/cal-com.py "$@"

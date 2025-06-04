@@ -1,0 +1,3 @@
+#!/bin/bash
+# google-maps CLI wrapper
+exec python3 /Users/pete/Projects/tool-library/google-maps/google-maps.py "$@"

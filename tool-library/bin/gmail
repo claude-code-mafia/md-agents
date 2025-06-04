@@ -1,0 +1,3 @@
+#!/bin/bash
+# Gmail CLI wrapper - Unified interface
+exec /Users/pete/Projects/tool-library/gmail-tool/venv/bin/python /Users/pete/Projects/tool-library/gmail-tool/gmail_unified.py "$@"

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Image Generation CLI wrapper
+exec python /Users/pete/Projects/tool-library/image-gen-tool/generate_image.py "$@"

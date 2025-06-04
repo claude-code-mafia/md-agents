@@ -1,0 +1,5 @@
+#!/bin/bash
+# square CLI wrapper
+cd /Users/pete/Projects/tool-library/square
+source venv/bin/activate 2>/dev/null || true
+exec python3 /Users/pete/Projects/tool-library/square/square_cli.py "$@"
