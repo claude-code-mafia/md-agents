@@ -16,6 +16,9 @@ Network-based accurate time retrieval tool that fetches current time from reliab
 ### 4. [Grok CLI Tool](./grok-tool/)
 Command-line interface for xAI's Grok API, specialized for X/Twitter analysis and uncensored content generation.
 
+### 5. [Cloudflare Images Tool](./cloudflare-images/)
+Upload and manage images on Cloudflare Images with a simple command-line interface. Perfect for converting local image files to web-accessible URLs.
+
 ## Structure
 
 ```
@@ -29,6 +32,10 @@ tool-library/
 ├── grok-tool/               # Grok AI CLI for X analysis
 │   ├── README.md
 │   ├── grok_cli.py
+│   └── setup.sh
+├── cloudflare-images/       # Cloudflare Images upload tool
+│   ├── README.md
+│   ├── cf-images
 │   └── setup.sh
 ├── image-gen-tool/          # Image generation tool
 │   ├── README.md

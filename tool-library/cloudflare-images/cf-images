@@ -1,0 +1,361 @@
+#!/usr/bin/env python3
+"""
+Cloudflare Images CLI Tool
+
+Upload images to Cloudflare Images and get web-accessible URLs.
+Designed for integration with image generation workflows.
+"""
+
+import argparse
+import json
+import os
+import sys
+import mimetypes
+from pathlib import Path
+from typing import Optional, Dict, Any
+
+try:
+    import requests
+except ImportError:
+    print("Error: The 'requests' library is required but not installed.", file=sys.stderr)
+    print("Please install it with: pip install requests", file=sys.stderr)
+    sys.exit(1)
+
+
+class CloudflareImagesClient:
+    """Client for Cloudflare Images API"""
+    
+    def __init__(self, account_id: str, api_token: str):
+        self.account_id = account_id
+        self.api_token = api_token
+        self.base_url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1"
+        self.headers = {
+            "Authorization": f"Bearer {api_token}"
+        }
+    
+    def upload_image(self, file_path: str, custom_id: Optional[str] = None, 
+                    require_signed_urls: bool = False, metadata: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
+        """Upload an image to Cloudflare Images"""
+        
+        # Validate file exists and size
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
+        
+        file_size = os.path.getsize(file_path)
+        if file_size > 10 * 1024 * 1024:  # 10MB limit
+            raise ValueError(f"File too large: {file_size} bytes (max 10MB)")
+        
+        # Prepare form data
+        with open(file_path, 'rb') as f:
+            files = {'file': (os.path.basename(file_path), f, self._get_content_type(file_path))}
+            
+            data = {}
+            if custom_id:
+                data['id'] = custom_id
+            
+            data['requireSignedURLs'] = 'true' if require_signed_urls else 'false'
+            
+            if metadata:
+                # Cloudflare expects metadata as JSON string
+                metadata_str = json.dumps(metadata)
+                if len(metadata_str.encode('utf-8')) > 1024:
+                    raise ValueError("Metadata exceeds 1024 bytes limit")
+                data['metadata'] = metadata_str
+            
+            # Make request
+            response = requests.post(
+                self.base_url,
+                headers=self.headers,
+                files=files,
+                data=data
+            )
+        
+        # Handle response
+        result = response.json()
+        
+        if not result.get('success'):
+            errors = result.get('errors', [])
+            error_msg = '; '.join([f"{e.get('code', 'Unknown')}: {e.get('message', 'Unknown error')}" for e in errors])
+            raise Exception(f"Upload failed: {error_msg}")
+        
+        return result
+    
+    def _get_content_type(self, file_path: str) -> str:
+        """Determine content type for the file"""
+        mime_type, _ = mimetypes.guess_type(file_path)
+        
+        # Map to supported Cloudflare types
+        supported_types = {
+            'image/png': 'image/png',
+            'image/jpeg': 'image/jpeg',
+            'image/jpg': 'image/jpeg',
+            'image/gif': 'image/gif',
+            'image/webp': 'image/webp',
+            'image/svg+xml': 'image/svg+xml'
+        }
+        
+        if mime_type in supported_types:
+            return supported_types[mime_type]
+        
+        # Default based on extension
+        ext = Path(file_path).suffix.lower()
+        ext_map = {
+            '.png': 'image/png',
+            '.jpg': 'image/jpeg',
+            '.jpeg': 'image/jpeg',
+            '.gif': 'image/gif',
+            '.webp': 'image/webp',
+            '.svg': 'image/svg+xml'
+        }
+        
+        return ext_map.get(ext, 'application/octet-stream')
+
+
+def upload_command(args):
+    """Handle the upload command"""
+    
+    # Get credentials from environment
+    account_id = os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+    api_token = os.environ.get('CLOUDFLARE_API_TOKEN')
+    
+    if not account_id or not api_token:
+        print("Error: Missing required environment variables", file=sys.stderr)
+        print("\nPlease set:", file=sys.stderr)
+        print("  export CLOUDFLARE_ACCOUNT_ID=your-account-id", file=sys.stderr)
+        print("  export CLOUDFLARE_API_TOKEN=your-api-token", file=sys.stderr)
+        print("\nFind these in your Cloudflare dashboard:", file=sys.stderr)
+        print("  - Account ID: Right sidebar of your dashboard", file=sys.stderr)
+        print("  - API Token: My Profile > API Tokens > Create Token", file=sys.stderr)
+        print("    (Needs 'Cloudflare Images:Edit' permission)", file=sys.stderr)
+        return 1
+    
+    try:
+        client = CloudflareImagesClient(account_id, api_token)
+        
+        # Parse metadata if provided
+        metadata = None
+        if args.metadata:
+            try:
+                metadata = json.loads(args.metadata)
+            except json.JSONDecodeError:
+                print("Error: Invalid JSON in metadata", file=sys.stderr)
+                return 1
+        
+        # Upload the image
+        result = client.upload_image(
+            args.file,
+            custom_id=args.id,
+            require_signed_urls=args.signed_urls,
+            metadata=metadata
+        )
+        
+        # Extract the important information
+        image_data = result.get('result', {})
+        
+        output = {
+            'success': True,
+            'id': image_data.get('id'),
+            'url': image_data.get('variants', [''])[0],  # First variant is usually 'public'
+            'uploaded': image_data.get('uploaded'),
+            'requireSignedURLs': image_data.get('requireSignedURLs', False)
+        }
+        
+        # Add metadata if it exists
+        if image_data.get('metadata'):
+            output['metadata'] = image_data.get('metadata')
+        
+        # Output based on format
+        if args.format == 'json':
+            print(json.dumps(output, indent=2))
+        else:
+            print(f"✓ Image uploaded successfully")
+            print(f"ID: {output['id']}")
+            print(f"URL: {output['url']}")
+            if output.get('metadata'):
+                print(f"Metadata: {json.dumps(output['metadata'])}")
+        
+        return 0
+        
+    except FileNotFoundError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def list_command(args):
+    """Handle the list command"""
+    
+    # Get credentials from environment
+    account_id = os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+    api_token = os.environ.get('CLOUDFLARE_API_TOKEN')
+    
+    if not account_id or not api_token:
+        print("Error: Missing required environment variables", file=sys.stderr)
+        return 1
+    
+    try:
+        # Build URL with pagination
+        url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v2"
+        params = {
+            'per_page': args.limit
+        }
+        if args.page:
+            params['page'] = args.page
+        
+        headers = {
+            "Authorization": f"Bearer {api_token}"
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        result = response.json()
+        
+        if not result.get('success'):
+            errors = result.get('errors', [])
+            error_msg = '; '.join([f"{e.get('code', 'Unknown')}: {e.get('message', 'Unknown error')}" for e in errors])
+            raise Exception(f"List failed: {error_msg}")
+        
+        images = result.get('result', {}).get('images', [])
+        
+        if args.format == 'json':
+            print(json.dumps({
+                'success': True,
+                'images': images,
+                'count': len(images)
+            }, indent=2))
+        else:
+            print(f"Found {len(images)} image(s):")
+            for img in images:
+                print(f"\nID: {img.get('id')}")
+                print(f"Filename: {img.get('filename', 'N/A')}")
+                print(f"Uploaded: {img.get('uploaded', 'N/A')}")
+                print(f"URL: {img.get('variants', ['N/A'])[0]}")
+                if img.get('metadata'):
+                    print(f"Metadata: {json.dumps(img.get('metadata'))}")
+        
+        return 0
+        
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def delete_command(args):
+    """Handle the delete command"""
+    
+    # Get credentials from environment
+    account_id = os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+    api_token = os.environ.get('CLOUDFLARE_API_TOKEN')
+    
+    if not account_id or not api_token:
+        print("Error: Missing required environment variables", file=sys.stderr)
+        return 1
+    
+    try:
+        url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/{args.id}"
+        headers = {
+            "Authorization": f"Bearer {api_token}"
+        }
+        
+        response = requests.delete(url, headers=headers)
+        result = response.json()
+        
+        if not result.get('success'):
+            errors = result.get('errors', [])
+            error_msg = '; '.join([f"{e.get('code', 'Unknown')}: {e.get('message', 'Unknown error')}" for e in errors])
+            raise Exception(f"Delete failed: {error_msg}")
+        
+        if args.format == 'json':
+            print(json.dumps({'success': True, 'deleted': args.id}, indent=2))
+        else:
+            print(f"✓ Image {args.id} deleted successfully")
+        
+        return 0
+        
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Cloudflare Images CLI - Upload and manage images',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Upload an image with custom ID
+  cf-images upload image.png --id my-custom-id
+  
+  # Upload with metadata
+  cf-images upload photo.jpg --id photo-123 --metadata '{"author": "John", "category": "landscape"}'
+  
+  # List images
+  cf-images list --limit 10
+  
+  # Delete an image
+  cf-images delete my-custom-id
+  
+  # Get JSON output
+  cf-images upload image.png --format json
+
+Environment Variables:
+  CLOUDFLARE_ACCOUNT_ID  - Your Cloudflare account ID (required)
+  CLOUDFLARE_API_TOKEN   - Your Cloudflare API token (required)
+  
+Getting Credentials:
+  1. Account ID: Found in right sidebar of Cloudflare dashboard
+  2. API Token: My Profile > API Tokens > Create Token
+     - Template: Custom token
+     - Permissions: Account > Cloudflare Images > Edit
+     - Account Resources: Include > Your account
+"""
+    )
+    
+    # Global options
+    parser.add_argument('--format', choices=['text', 'json'], default='text',
+                       help='Output format (default: text)')
+    
+    subparsers = parser.add_subparsers(dest='command', help='Available commands')
+    
+    # Upload command
+    upload_parser = subparsers.add_parser('upload', help='Upload an image')
+    upload_parser.add_argument('file', help='Path to image file')
+    upload_parser.add_argument('--id', help='Custom ID for the image')
+    upload_parser.add_argument('--signed-urls', action='store_true',
+                             help='Require signed URLs for access')
+    upload_parser.add_argument('--metadata', help='JSON metadata to attach')
+    
+    # List command
+    list_parser = subparsers.add_parser('list', help='List uploaded images')
+    list_parser.add_argument('--limit', type=int, default=100,
+                           help='Number of images to list (default: 100)')
+    list_parser.add_argument('--page', type=int,
+                           help='Page number for pagination')
+    
+    # Delete command
+    delete_parser = subparsers.add_parser('delete', help='Delete an image')
+    delete_parser.add_argument('id', help='ID of image to delete')
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    # Route to appropriate command
+    if args.command == 'upload':
+        return upload_command(args)
+    elif args.command == 'list':
+        return list_command(args)
+    elif args.command == 'delete':
+        return delete_command(args)
+    
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
